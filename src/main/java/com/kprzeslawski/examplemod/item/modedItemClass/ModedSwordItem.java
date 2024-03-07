@@ -1,9 +1,11 @@
 package com.kprzeslawski.examplemod.item.modedItemClass;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -15,14 +17,30 @@ public class ModedSwordItem extends SwordItem {
     }
 
     public @NotNull ItemStack getDefaultInstance() {
-        return new ItemStack(this);
+        ItemStack instance = new ItemStack(this);
+        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
+
+        return instance;
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        int reinforce_level = stack.getOrCreateTag().getInt("REINFORCE_LEVEL");
+
+        Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
+        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", 0.2 + reinforce_level, AttributeModifier.Operation.ADDITION));
+        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", (double)100 + reinforce_level, AttributeModifier.Operation.ADDITION));
+
         return super.getAttributeModifiers(slot, stack);
     }
-// TODO in progression add item ability to upgrade via essence
+
+
+// TODO:
+//  1.in progression add item ability to upgrade via essence + test stats change on craft and def_instance
+//  2.add to constructor map of stats on each level
+//  3.
+
+
 //
 //    @Override
 //    public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
