@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-24T22:52:17.9201309	Item Models: examplemod
+// 1.20.1	2024-03-07T19:46:14.4188227	Item Models: examplemod
 8d9710e8332f965fd5e4d502a7547cc8eb7de962 assets/examplemod/models/item/essence_t1.json
 f9b477842efbdb0683095449a2ed5f2f7d714a19 assets/examplemod/models/item/essence_t2.json
 6aa5e32198fcf7da6808d7611cd6782c1697f338 assets/examplemod/models/item/essence_t3.json
@@ -6,6 +6,7 @@ f9b477842efbdb0683095449a2ed5f2f7d714a19 assets/examplemod/models/item/essence_t
 d417b609ea9730396da84a7810ac21847cd91c29 assets/examplemod/models/item/essence_t5.json
 8650844437226fcd3f5638682d2421f0dee0c660 assets/examplemod/models/item/essence_t6.json
 5135f0a57e1f0551cedbd7289d2e5537419b0f80 assets/examplemod/models/item/essence_t7.json
+0fedae7114481ba3bfc2890cf3f9e2f80c3d860f assets/examplemod/models/item/sw_1.json
 cac48374e1f56970f7910e96528db812535b41b1 assets/examplemod/models/item/tangerine.json
 f4fe033caa9db83c7283b15c797971f5e74c13f4 assets/examplemod/models/item/tangerine_boots.json
 121ac05145889022eeb63479091cd52da9a5149e assets/examplemod/models/item/tangerine_boots_amethyst_trim.json
