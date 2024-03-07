@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "examplemod:tangerine"
+    },
+    {
+      "item": "examplemod:tangerine"
+    },
+    {
+      "item": "examplemod:tangerine"
+    },
+    {
+      "item": "examplemod:tangerine"
+    },
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "result": {
+    "item": "examplemod:tangerine_ingot"
+  }
+}

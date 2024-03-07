@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "examplemod:essence_t5"
+    },
+    {
+      "item": "examplemod:essence_t5"
+    },
+    {
+      "item": "examplemod:essence_t5"
+    },
+    {
+      "item": "examplemod:essence_t5"
+    },
+    {
+      "item": "examplemod:essence_t5"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:diamond"
+    }
+  ],
+  "result": {
+    "item": "examplemod:essence_t6"
+  }
+}

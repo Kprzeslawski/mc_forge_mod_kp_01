@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    },
+    {
+      "item": "examplemod:essence_t3"
+    }
+  ],
+  "result": {
+    "item": "examplemod:essence_t4"
+  }
+}

@@ -1,0 +1,4 @@
+// 1.20.1	2024-03-05T21:33:22.4492502	Registries
+b48bf9d06f31c98061084ddf7ebe006fdc4aee6e data/examplemod/forge/biome_modifier/add_end_tangerine_ore.json
+bf3157639919a572a2cbea6d87321813aae47b6e data/examplemod/worldgen/configured_feature/end_tangerine_ore.json
+8a03cc274b73b69cb1f984f56ed4121479ef0d27 data/examplemod/worldgen/placed_feature/end_sapphire_ore_placed.json

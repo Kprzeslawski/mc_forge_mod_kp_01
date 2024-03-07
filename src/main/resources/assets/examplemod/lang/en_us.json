@@ -1,0 +1,21 @@
+{
+  "item.examplemod.tangerine": "Tangerine",
+  "item.examplemod.tangerine_ingot": "Tangerine Ingot",
+  "item.examplemod.tangerine_upgrade": "Tangerine Upgrade",
+  "block.examplemod.end_stone_tangerine_ore":  "End Stone Tangerine Ore",
+
+  "item.examplemod.tangerine_helmet": "Tangerine Helmet",
+  "item.examplemod.tangerine_chestplate": "Tangerine Chestplate",
+  "item.examplemod.tangerine_leggings": "Tangerine Leggings",
+  "item.examplemod.tangerine_boots": "Tangerine Boots",
+
+  "item.examplemod.essence_t1": "Depleted Essence",
+  "item.examplemod.essence_t2": "Minor Essence",
+  "item.examplemod.essence_t3": "Average Essence",
+  "item.examplemod.essence_t4": "Great Essence",
+  "item.examplemod.essence_t5": "Energized Essence",
+  "item.examplemod.essence_t6": "Reinforced Essence",
+  "item.examplemod.essence_t7": "Ancient Essence",
+
+  "creativetab.modTab": "Mod Tab"
+}
