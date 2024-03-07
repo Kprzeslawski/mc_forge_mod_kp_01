@@ -25,13 +25,16 @@ public class ModedSwordItem extends SwordItem {
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        if(slot != EquipmentSlot.MAINHAND)
+            return super.getDefaultAttributeModifiers(slot);
+
         int reinforce_level = stack.getOrCreateTag().getInt("REINFORCE_LEVEL");
 
         Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
         res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", 0.2 + reinforce_level, AttributeModifier.Operation.ADDITION));
         res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", (double)100 + reinforce_level, AttributeModifier.Operation.ADDITION));
 
-        return super.getAttributeModifiers(slot, stack);
+        return res;
     }
 
 
