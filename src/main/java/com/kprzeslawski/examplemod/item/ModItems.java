@@ -2,8 +2,10 @@ package com.kprzeslawski.examplemod.item;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,8 +14,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ExampleMod.MOD_ID);
-//    public static final RegistryObject<Item> SW = ITEMS.register("magic_sword",
-//            () -> new SuperWeapon(Tiers.NETHERITE,3, (float) 1f,new Item.Properties()));
+    public static final RegistryObject<Item> SW_1 = ITEMS.register("magic_sword",
+            () -> new ModedSwordItem(Tiers.NETHERITE,3, (float) 1f,new Item.Properties()));
 
     public static final RegistryObject<Item> TANGERINE = ITEMS.register("tangerine",
             () -> new Item(new Item.Properties()));

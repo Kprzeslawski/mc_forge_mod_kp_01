@@ -35,8 +35,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.TANGERINE_CHESTPLATE.get());
                         pOutput.accept(ModItems.TANGERINE_LEGGINGS.get());
                         pOutput.accept(ModItems.TANGERINE_BOOTS.get());
-//
-//                        pOutput.accept(ModItems.SW.get());
+
+                        pOutput.accept(ModItems.SW_1.get());
                     })
                     .build()
     );
