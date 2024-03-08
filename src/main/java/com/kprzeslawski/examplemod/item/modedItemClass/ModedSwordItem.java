@@ -51,7 +51,7 @@ public class ModedSwordItem extends SwordItem {
 
         if(reinforce_level > attributes.size())return super.getDefaultAttributeModifiers(slot);
 
-        ReinforcedLevelProps props = attributes.get(reinforce_level);
+        ReinforcedLevelProps props = attributes.get(reinforce_level-1);
 
         Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
         res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", props.attack_speed, AttributeModifier.Operation.ADDITION));
