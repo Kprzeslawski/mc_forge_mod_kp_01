@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Vector;
 
 public class ModedSwordItem extends SwordItem {
 
