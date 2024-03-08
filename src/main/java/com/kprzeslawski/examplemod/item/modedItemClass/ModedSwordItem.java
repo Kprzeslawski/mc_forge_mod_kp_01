@@ -2,15 +2,20 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +48,12 @@ public class ModedSwordItem extends SwordItem {
     }
 
     @Override
+    public void onCraftedBy(ItemStack pStack, @NotNull Level pLevel, Player pPlayer) {
+        pStack.getOrCreateTag().putInt("REINFORCE_LEVEL",2);
+        super.onCraftedBy(pStack, pLevel, pPlayer);
+    }
+
+    @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         if(slot != EquipmentSlot.MAINHAND)
             return super.getDefaultAttributeModifiers(slot);
@@ -63,8 +74,16 @@ public class ModedSwordItem extends SwordItem {
         return res;
     }
 
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
 
-// TODO:
+        if(pStack.getOrCreateTag().getInt("REINFORCE_LEVEL") > 0)
+            pTooltipComponents.add(Component.literal("Energized lv. " + pStack.getOrCreateTag().getInt("REINFORCE_LEVEL")));
+
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    // TODO:
 //  1.in progression add item ability to upgrade via essence + test stats change on craft and def_instance
 //  2.add to constructor map of stats on each level
 //  3.

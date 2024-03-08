@@ -1,10 +1,11 @@
-// 1.20.1	2024-03-05T22:51:25.0029007	Recipes
+// 1.20.1	2024-03-08T22:29:28.708054	Recipes
 533cf3a7d0f7c399d3a8b15561e122cca07046b9 data/examplemod/advancements/recipes/misc/essence_t2.json
 893da1a0cc329632c3463b97f9dbe38f6396aef7 data/examplemod/advancements/recipes/misc/essence_t3.json
 2de97f095fb15f3beec5107e9e03cdbd882e46f2 data/examplemod/advancements/recipes/misc/essence_t4.json
 39b129a575f52bf56a3f62efb9f74ca8b1dbe5cf data/examplemod/advancements/recipes/misc/essence_t5.json
 0af99333e6f25b887bdde25882caf3c4f3f4948c data/examplemod/advancements/recipes/misc/essence_t6.json
 fbe516d36dbd69670efc26977837591873d0199b data/examplemod/advancements/recipes/misc/essence_t7.json
+8dc048b40f223bc028c7f1900d14751dca65cfdf data/examplemod/advancements/recipes/misc/sw_1.json
 e578541d4fad5714a74307cfcb05ed83e66c39e4 data/examplemod/advancements/recipes/misc/tangerine_ingot.json
 fd30d75f5461e074a93f250a72a1b8ed911a5a51 data/examplemod/advancements/recipes/misc/tangerine_upgrade.json
 017365a71c6dcf7946f709ebb829ddf95a349037 data/examplemod/recipes/essence_t2.json
@@ -13,6 +14,7 @@ e57c35baa103234d73b68c1a5776dc4096e50c42 data/examplemod/recipes/essence_t3.json
 b0714c78236c81eba7a907cdd9b69b797b23febd data/examplemod/recipes/essence_t5.json
 c03b01c0861adc5a4bbda939ce9d3c0d122fa80a data/examplemod/recipes/essence_t6.json
 735ec67d5d49a6c7660eef7aabc93b4d9ea801bd data/examplemod/recipes/essence_t7.json
+7c35616d875b7fe19c76108a7b9723f3a4be2994 data/examplemod/recipes/sw_1.json
 fc3e6c05d82bff6c66c1fc42ee16b4cbe523da2f data/examplemod/recipes/tangerine_ingot.json
 e2dd89efab7939d6e97ac295f02b17a5e5031c8b data/examplemod/recipes/tangerine_upgrade.json
 520876adb09ee4ac9570a195e4fbe1905ddd26b5 data/minecraft/advancements/recipes/misc/tangerine_upgrade_boots.json
