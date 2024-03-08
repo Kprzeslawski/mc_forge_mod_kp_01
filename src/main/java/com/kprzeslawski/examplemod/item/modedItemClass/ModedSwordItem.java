@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -33,6 +34,8 @@ public class ModedSwordItem extends SwordItem {
             this.range_bonus = range_bonus;
         }
     }
+
+    private static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
     private final List<ReinforcedLevelProps> attributes;
 
     public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes) {
@@ -42,14 +45,14 @@ public class ModedSwordItem extends SwordItem {
 
     public @NotNull ItemStack getDefaultInstance() {
         ItemStack instance = new ItemStack(this);
-        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
+        instance.getOrCreateTag().putInt(ENERGIZE_TAG,1);
 
         return instance;
     }
 
     @Override
     public void onCraftedBy(ItemStack pStack, @NotNull Level pLevel, Player pPlayer) {
-        pStack.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
+        pStack.getOrCreateTag().putInt(ENERGIZE_TAG,1);
         super.onCraftedBy(pStack, pLevel, pPlayer);
     }
 
@@ -58,7 +61,7 @@ public class ModedSwordItem extends SwordItem {
         if(slot != EquipmentSlot.MAINHAND)
             return super.getDefaultAttributeModifiers(slot);
 
-        int reinforce_level = stack.getOrCreateTag().getInt("REINFORCE_LEVEL");
+        int reinforce_level = stack.getOrCreateTag().getInt(ENERGIZE_TAG);
 
         if(reinforce_level > attributes.size() || reinforce_level < 1)return super.getDefaultAttributeModifiers(slot);
 
@@ -68,8 +71,8 @@ public class ModedSwordItem extends SwordItem {
         res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", props.attack_speed, AttributeModifier.Operation.ADDITION));
         res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", props.attack_dmg, AttributeModifier.Operation.ADDITION));
 
-        res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", props.range_bonus,AttributeModifier.Operation.ADDITION));
-        res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", props.range_bonus,AttributeModifier.Operation.ADDITION));
+        res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", props.range_bonus,AttributeModifier.Operation.ADDITION));
+        res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", props.range_bonus,AttributeModifier.Operation.ADDITION));
 
         return res;
     }
@@ -77,8 +80,12 @@ public class ModedSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
 
-        if(pStack.getOrCreateTag().getInt("REINFORCE_LEVEL") > 0)
-            pTooltipComponents.add(Component.literal("Energized lv. " + pStack.getOrCreateTag().getInt("REINFORCE_LEVEL")));
+        if(pStack.getOrCreateTag().getInt(ENERGIZE_TAG) > 0)
+            pTooltipComponents.add(
+                    Component.literal("Energized Lv. " + pStack.getOrCreateTag().getInt(ENERGIZE_TAG))
+                            .withStyle(ChatFormatting.DARK_PURPLE)
+                            .withStyle(ChatFormatting.ITALIC)
+            );
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
