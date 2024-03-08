@@ -1,6 +1,7 @@
 package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -36,16 +37,33 @@ public class ModedSwordItem extends SwordItem {
     }
 
     private static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
-    private final List<ReinforcedLevelProps> attributes;
+    private final List<? extends Multimap<Attribute, AttributeModifier>> modifiers;
 
     public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        this.attributes = attributes;
+
+        modifiers = attributes.stream()
+                .map(arg -> {
+                    ImmutableMultimap.Builder<Attribute, AttributeModifier> res = ImmutableMultimap.builder();
+                    res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", arg.attack_speed, AttributeModifier.Operation.ADDITION));
+                    res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", arg.attack_dmg, AttributeModifier.Operation.ADDITION));
+
+                    res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", arg.range_bonus,AttributeModifier.Operation.ADDITION));
+                    res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", arg.range_bonus,AttributeModifier.Operation.ADDITION));
+                    return res.build();
+                }).toList();
     }
 
     public @NotNull ItemStack getDefaultInstance() {
         ItemStack instance = new ItemStack(this);
         instance.getOrCreateTag().putInt(ENERGIZE_TAG,1);
+
+        return instance;
+    }
+
+    public @NotNull ItemStack getInstance(int en_level) {
+        ItemStack instance = new ItemStack(this);
+        instance.getOrCreateTag().putInt(ENERGIZE_TAG, en_level);
 
         return instance;
     }
@@ -63,18 +81,9 @@ public class ModedSwordItem extends SwordItem {
 
         int reinforce_level = stack.getOrCreateTag().getInt(ENERGIZE_TAG);
 
-        if(reinforce_level > attributes.size() || reinforce_level < 1)return super.getDefaultAttributeModifiers(slot);
+        if(reinforce_level > modifiers.size() || reinforce_level < 1)return super.getDefaultAttributeModifiers(slot);
 
-        ReinforcedLevelProps props = attributes.get(reinforce_level-1);
-
-        Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
-        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", props.attack_speed, AttributeModifier.Operation.ADDITION));
-        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", props.attack_dmg, AttributeModifier.Operation.ADDITION));
-
-        res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", props.range_bonus,AttributeModifier.Operation.ADDITION));
-        res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", props.range_bonus,AttributeModifier.Operation.ADDITION));
-
-        return res;
+        return modifiers.get(reinforce_level - 1);
     }
 
     @Override
