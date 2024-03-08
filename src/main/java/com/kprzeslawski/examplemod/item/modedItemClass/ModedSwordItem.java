@@ -42,14 +42,14 @@ public class ModedSwordItem extends SwordItem {
 
     public @NotNull ItemStack getDefaultInstance() {
         ItemStack instance = new ItemStack(this);
-        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",2);
+        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
 
         return instance;
     }
 
     @Override
     public void onCraftedBy(ItemStack pStack, @NotNull Level pLevel, Player pPlayer) {
-        pStack.getOrCreateTag().putInt("REINFORCE_LEVEL",2);
+        pStack.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
         super.onCraftedBy(pStack, pLevel, pPlayer);
     }
 
