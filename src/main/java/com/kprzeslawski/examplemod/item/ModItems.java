@@ -11,13 +11,20 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Vector;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ExampleMod.MOD_ID);
     public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
-            () -> new ModedSwordItem(Tiers.NETHERITE,3, (float) 1f,new Item.Properties(), new Vector<>()));
+            () -> new ModedSwordItem(Tiers.NETHERITE, 3, (float) 1f, new Item.Properties(), Arrays.asList(
+                    new ModedSwordItem.ReinforcedLevelProps(1,1,1),
+                    new ModedSwordItem.ReinforcedLevelProps(2,1,2),
+                    new ModedSwordItem.ReinforcedLevelProps(3,1,3),
+                    new ModedSwordItem.ReinforcedLevelProps(4,1,4)
+            )));
 
     public static final RegistryObject<Item> TANGERINE = ITEMS.register("tangerine",
             () -> new Item(new Item.Properties()));

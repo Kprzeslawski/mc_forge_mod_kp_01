@@ -12,6 +12,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
 
@@ -21,10 +22,16 @@ public class ModedSwordItem extends SwordItem {
             public double attack_dmg;
             public double attack_speed;
             public double range_bonus;
-    }
-    private final Vector<ReinforcedLevelProps> attributes;
 
-    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, Vector<ReinforcedLevelProps> attributes) {
+        public ReinforcedLevelProps(double attack_dmg, double attack_speed, double range_bonus) {
+            this.attack_dmg = attack_dmg;
+            this.attack_speed = attack_speed;
+            this.range_bonus = range_bonus;
+        }
+    }
+    private final List<ReinforcedLevelProps> attributes;
+
+    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
         this.attributes = attributes;
     }
