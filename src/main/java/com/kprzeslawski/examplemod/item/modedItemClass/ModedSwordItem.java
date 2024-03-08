@@ -11,9 +11,20 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Vector;
+
 public class ModedSwordItem extends SwordItem {
-    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+
+    public static class ReinforcedLevelProps {
+            public float attack_dmg;
+            public float attack_speed;
+            public float range_bonus;
+    }
+    private final Vector<ReinforcedLevelProps> attributes;
+
+    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, Vector<ReinforcedLevelProps> attributes) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        this.attributes = attributes;
     }
 
     public @NotNull ItemStack getDefaultInstance() {
@@ -29,6 +40,10 @@ public class ModedSwordItem extends SwordItem {
             return super.getDefaultAttributeModifiers(slot);
 
         int reinforce_level = stack.getOrCreateTag().getInt("REINFORCE_LEVEL");
+
+        if(reinforce_level > attributes.size())return super.getDefaultAttributeModifiers(slot);
+
+        ReinforcedLevelProps props = attributes.get(reinforce_level);
 
         Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
         res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", 0.2 + reinforce_level, AttributeModifier.Operation.ADDITION));
