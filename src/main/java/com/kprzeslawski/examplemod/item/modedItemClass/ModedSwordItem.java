@@ -9,16 +9,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
 import java.util.Vector;
 
 public class ModedSwordItem extends SwordItem {
 
     public static class ReinforcedLevelProps {
-            public float attack_dmg;
-            public float attack_speed;
-            public float range_bonus;
+            public double attack_dmg;
+            public double attack_speed;
+            public double range_bonus;
     }
     private final Vector<ReinforcedLevelProps> attributes;
 
@@ -46,8 +48,11 @@ public class ModedSwordItem extends SwordItem {
         ReinforcedLevelProps props = attributes.get(reinforce_level);
 
         Multimap<Attribute, AttributeModifier> res = ArrayListMultimap.create();
-        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", 0.2 + reinforce_level, AttributeModifier.Operation.ADDITION));
-        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", (double)100 + reinforce_level, AttributeModifier.Operation.ADDITION));
+        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", props.attack_speed, AttributeModifier.Operation.ADDITION));
+        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", props.attack_dmg, AttributeModifier.Operation.ADDITION));
+
+        res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", props.range_bonus,AttributeModifier.Operation.ADDITION));
+        res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", props.range_bonus,AttributeModifier.Operation.ADDITION));
 
         return res;
     }
