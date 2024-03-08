@@ -37,7 +37,7 @@ public class ModedSwordItem extends SwordItem {
 
     public @NotNull ItemStack getDefaultInstance() {
         ItemStack instance = new ItemStack(this);
-        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",1);
+        instance.getOrCreateTag().putInt("REINFORCE_LEVEL",2);
 
         return instance;
     }
@@ -49,7 +49,7 @@ public class ModedSwordItem extends SwordItem {
 
         int reinforce_level = stack.getOrCreateTag().getInt("REINFORCE_LEVEL");
 
-        if(reinforce_level > attributes.size())return super.getDefaultAttributeModifiers(slot);
+        if(reinforce_level > attributes.size() || reinforce_level < 1)return super.getDefaultAttributeModifiers(slot);
 
         ReinforcedLevelProps props = attributes.get(reinforce_level-1);
 
