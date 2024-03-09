@@ -4,7 +4,10 @@ import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.ModCreativeModTabs;
 import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.loot.ModLootModifiers;
+import com.kprzeslawski.examplemod.util.ModMenu;
+import com.kprzeslawski.examplemod.util.menu.EnergizedStationScreen;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -22,7 +25,7 @@ import org.slf4j.Logger;
 public class ExampleMod
 {
     public static final String MOD_ID = "examplemod";
-    private static final Logger LOGGER = LogUtils.getLogger();
+//    private static final Logger LOGGER = LogUtils.getLogger();
 
     public ExampleMod()
     {
@@ -37,6 +40,7 @@ public class ExampleMod
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+        ModMenu.register(modEventBus);
         modEventBus.addListener(this::addCreative);
     }
 
@@ -60,6 +64,7 @@ public class ExampleMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            MenuScreens.register(ModMenu.ENERGIZING_STATION_MENU.get(), EnergizedStationScreen::new);
         }
     }
 }

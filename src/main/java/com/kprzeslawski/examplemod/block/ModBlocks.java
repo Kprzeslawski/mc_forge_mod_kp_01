@@ -1,14 +1,13 @@
 package com.kprzeslawski.examplemod.block;
 
 import com.kprzeslawski.examplemod.ExampleMod;
-import com.kprzeslawski.examplemod.block.custom.EnergizingTableBlock;
+import com.kprzeslawski.examplemod.block.custom.EnergizingStationBlock;
 import com.kprzeslawski.examplemod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -39,7 +38,7 @@ public class ModBlocks {
                     .strength(5f).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
 
     public static final RegistryObject<Block> ENERGIZING_STATION_BLOCK = registerBlock("energizing_station",
-            () -> new EnergizingTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+            () -> new EnergizingStationBlock(BlockBehaviour.Properties.copy(Blocks.SMITHING_TABLE).noOcclusion()));
 
 //
 //
