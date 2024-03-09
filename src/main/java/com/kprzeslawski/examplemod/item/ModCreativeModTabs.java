@@ -41,6 +41,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(2));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(3));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(4));
+
+                        pOutput.accept(ModBlocks.ENERGIZING_STATION_BLOCK.get());
                     })
                     .build()
     );

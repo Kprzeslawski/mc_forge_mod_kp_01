@@ -40,7 +40,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.END_STONE_TANGERINE_ORE.get(),
                 block -> createOreDrop(ModBlocks.END_STONE_TANGERINE_ORE.get(), ModItems.TANGERINE.get()));
 
-//        this.dropSelf(ModBlocks.SAPPHIRE_STAIRS.get());
+        this.dropSelf(ModBlocks.ENERGIZING_STATION_BLOCK.get());
 //        this.dropSelf(ModBlocks.SAPPHIRE_BUTTON.get());
 //        this.dropSelf(ModBlocks.SAPPHIRE_PRESSURE_PLATE.get());
 //        this.dropSelf(ModBlocks.SAPPHIRE_TRAPDOOR.get());
