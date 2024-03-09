@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "minecraft:block/smithing_table_bottom",
-    "east": "minecraft:block/smithing_table_side",
-    "north": "minecraft:block/smithing_table_front",
-    "particle": "minecraft:block/smithing_table_front",
-    "south": "minecraft:block/smithing_table_front",
-    "up": "minecraft:block/smithing_table_top",
-    "west": "minecraft:block/smithing_table_side"
+    "down": "examplemod:block/energizing_station_bottom",
+    "east": "examplemod:block/energizing_station_side",
+    "north": "examplemod:block/energizing_station_front",
+    "particle": "examplemod:block/energizing_station_front",
+    "south": "examplemod:block/energizing_station_front",
+    "up": "examplemod:block/energizing_station_top",
+    "west": "examplemod:block/energizing_station_side"
   }
 }
