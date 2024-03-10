@@ -88,7 +88,10 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 
     public void createResult() {
         ItemStack inp_w = this.inputSlots.getItem(0);
-        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w))return; // TODO check if correctly validate possibility to upgrade
+        if(!(inp_w.getItem() instanceof ModedSwordItem))return;
+        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w))return;
+ // TODO check if correctly validate possibility to upgrade
+
         ItemStack res = inp_w.copy();
         res.getOrCreateTag().putInt(
                 ModedSwordItem.ENERGIZE_TAG,
