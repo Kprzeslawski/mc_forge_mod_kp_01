@@ -1,6 +1,5 @@
 package com.kprzeslawski.examplemod.item.modedItemClass;
 
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -10,10 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
@@ -24,23 +20,14 @@ import java.util.UUID;
 
 public class ModedSwordItem extends SwordItem {
 
-    public static class ReinforcedLevelProps {
-            public double attack_dmg;
-            public double attack_speed;
-            public double range_bonus;
-
-        public ReinforcedLevelProps(double attack_dmg, double attack_speed, double range_bonus) {
-            this.attack_dmg = attack_dmg;
-            this.attack_speed = attack_speed;
-            this.range_bonus = range_bonus;
-        }
-    }
-
     public static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
     private final List<? extends Multimap<Attribute, AttributeModifier>> modifiers;
+    public final List<EnergizeUpgradeCost> upgrade_ingredients;
 
-    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes) {
+    public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes, List<EnergizeUpgradeCost> upgradeIngredients) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        if(attributes.size() != upgradeIngredients.size())
+            throw new RuntimeException("Incorrect definition of upgrade props and ingredients in modSwordItemClass");
 
         modifiers = attributes.stream()
                 .map(arg -> {
@@ -52,6 +39,8 @@ public class ModedSwordItem extends SwordItem {
                     res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier r", arg.range_bonus,AttributeModifier.Operation.ADDITION));
                     return res.build();
                 }).toList();
+        
+        upgrade_ingredients = upgradeIngredients;
     }
 
     public @NotNull ItemStack getDefaultInstance() {
@@ -97,6 +86,35 @@ public class ModedSwordItem extends SwordItem {
             );
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    public boolean isUpgradable(ItemStack itemStack){
+        return itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) != 0 &&
+            itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) < upgrade_ingredients.size();
+    }
+    public EnergizeUpgradeCost getNextUpgradeCost(ItemStack itemStack){
+        return upgrade_ingredients.get(itemStack.getOrCreateTag().getInt(ENERGIZE_TAG));
+    }
+
+    public static class ReinforcedLevelProps {
+        public double attack_dmg;
+        public double attack_speed;
+        public double range_bonus;
+
+        public ReinforcedLevelProps(double attack_dmg, double attack_speed, double range_bonus) {
+            this.attack_dmg = attack_dmg;
+            this.attack_speed = attack_speed;
+            this.range_bonus = range_bonus;
+        }
+    }
+
+    public static class EnergizeUpgradeCost {
+        @Nullable
+        public Item upgrade_crystal;
+        public int upg_count;
+
+        public EnergizeUpgradeCost(Item item, int i) {
+        }
     }
 
     // TODO:

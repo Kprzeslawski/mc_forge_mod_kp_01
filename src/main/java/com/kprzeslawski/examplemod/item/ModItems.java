@@ -16,13 +16,6 @@ import java.util.Arrays;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ExampleMod.MOD_ID);
-    public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
-            () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
-                    new ModedSwordItem.ReinforcedLevelProps(1,1,1),
-                    new ModedSwordItem.ReinforcedLevelProps(2,1,2),
-                    new ModedSwordItem.ReinforcedLevelProps(3,1,3),
-                    new ModedSwordItem.ReinforcedLevelProps(4,1,4)
-            )));
 
     public static final RegistryObject<Item> TANGERINE = ITEMS.register("tangerine",
             () -> new Item(new Item.Properties()));
@@ -54,6 +47,21 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ESSENCE_T7 = ITEMS.register("essence_t7",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
+            () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
+                    new ModedSwordItem.ReinforcedLevelProps(1,1,1),
+                    new ModedSwordItem.ReinforcedLevelProps(2,1,2),
+                    new ModedSwordItem.ReinforcedLevelProps(3,1,3),
+                    new ModedSwordItem.ReinforcedLevelProps(4,1,4)
+            ),
+                    Arrays.asList(
+                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new ModedSwordItem.EnergizeUpgradeCost(null,0)
+                    )
+            ));
 
 
     public static void register(IEventBus eventBus){

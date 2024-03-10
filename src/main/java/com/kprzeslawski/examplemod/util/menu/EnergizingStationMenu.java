@@ -13,6 +13,7 @@ import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.ModTags;
+import com.mojang.datafixers.types.templates.Tag;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -25,17 +26,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 public class EnergizingStationMenu extends ItemCombinerMenu {
-    public static final int TEMPLATE_SLOT = 0;
-    public static final int BASE_SLOT = 1;
-    public static final int ADDITIONAL_SLOT = 2;
-    public static final int RESULT_SLOT = 3;
+
     public static final int TEMPLATE_SLOT_X_PLACEMENT = 8;
     public static final int BASE_SLOT_X_PLACEMENT = 26;
     public static final int ADDITIONAL_SLOT_X_PLACEMENT = 44;
     private static final int RESULT_SLOT_X_PLACEMENT = 98;
     public static final int SLOT_Y_PLACEMENT = 48;
-    @Nullable
-    private SmithingRecipe selectedRecipe;
 
     public EnergizingStationMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, ContainerLevelAccess.NULL);
@@ -63,7 +59,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     protected boolean mayPickup(Player pPlayer, boolean pHasStack) {
-        return this.selectedRecipe != null;
+        return false;
     }
 
     protected void onTake(Player pPlayer, ItemStack pStack) {
@@ -91,7 +87,14 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     public void createResult() {
-
+        ItemStack inp_w = this.inputSlots.getItem(0);
+        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w))return; // TODO check if correctly validate possibility to upgrade
+        ItemStack res = inp_w.copy();
+        res.getOrCreateTag().putInt(
+                ModedSwordItem.ENERGIZE_TAG,
+                res.getOrCreateTag().getInt(ModedSwordItem.ENERGIZE_TAG) + 1
+        );
+        this.resultSlots.setItem(0, res);
     }
 
     public int getSlotToQuickMoveTo(ItemStack pStack) {
