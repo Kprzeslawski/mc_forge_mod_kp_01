@@ -36,7 +36,7 @@ public class ModedSwordItem extends SwordItem {
         }
     }
 
-    private static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
+    public static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
     private final List<? extends Multimap<Attribute, AttributeModifier>> modifiers;
 
     public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes) {

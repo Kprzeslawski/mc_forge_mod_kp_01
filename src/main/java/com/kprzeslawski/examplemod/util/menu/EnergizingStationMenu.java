@@ -10,7 +10,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.util.ModMenu;
+import com.kprzeslawski.examplemod.util.ModTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -20,6 +22,7 @@ import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class EnergizingStationMenu extends ItemCombinerMenu {
     public static final int TEMPLATE_SLOT = 0;
@@ -45,13 +48,13 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 //        super(pType, pContainerId, pPlayerInventory, pAccess);
 //    }
 
-    protected ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
+    protected @NotNull ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
         return ItemCombinerMenuSlotDefinition.create().withSlot(0, 8, 48, (p_266643_) -> {
-            return true;
+            return p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG);
         }).withSlot(1, 26, 48, (p_286208_) -> {
-            return true;
+            return p_286208_.is(ModTags.Items.ENERGY_CRYSTAL);
         }).withSlot(2, 44, 48, (p_286207_) -> {
-            return true;
+            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
         }).withResultSlot(3, 98, 48).build();
     }
 

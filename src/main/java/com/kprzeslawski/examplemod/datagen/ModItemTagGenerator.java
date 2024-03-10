@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.datagen;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.ModItems;
+import com.kprzeslawski.examplemod.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -25,6 +26,17 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.TANGERINE_CHESTPLATE.get(),
                         ModItems.TANGERINE_LEGGINGS.get(),
                         ModItems.TANGERINE_BOOTS.get());
+
+        this.tag(ModTags.Items.ENERGY_CRYSTAL)
+                .add(
+                        ModItems.ESSENCE_T1.get(),
+                        ModItems.ESSENCE_T2.get(),
+                        ModItems.ESSENCE_T3.get(),
+                        ModItems.ESSENCE_T4.get(),
+                        ModItems.ESSENCE_T5.get(),
+                        ModItems.ESSENCE_T6.get(),
+                        ModItems.ESSENCE_T7.get()
+                );
 
     }
 }
