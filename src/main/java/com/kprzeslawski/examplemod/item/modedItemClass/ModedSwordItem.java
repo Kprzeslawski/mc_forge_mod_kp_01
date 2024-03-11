@@ -89,11 +89,13 @@ public class ModedSwordItem extends SwordItem {
     }
 
     public boolean isUpgradable(ItemStack itemStack){
-        return itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) != 0 &&
+        return itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) > 0 &&
             itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) < upgrade_ingredients.size();
     }
     public EnergizeUpgradeCost getNextUpgradeCost(ItemStack itemStack){
-        return upgrade_ingredients.get(itemStack.getOrCreateTag().getInt(ENERGIZE_TAG));
+        if(!isUpgradable(itemStack))
+            new EnergizeUpgradeCost(null,0);
+        return upgrade_ingredients.get(itemStack.getOrCreateTag().getInt(ENERGIZE_TAG)-1);
     }
 
     public static class ReinforcedLevelProps {
@@ -114,6 +116,8 @@ public class ModedSwordItem extends SwordItem {
         public int upg_count;
 
         public EnergizeUpgradeCost(Item item, int i) {
+            upgrade_crystal = item;
+            upg_count = i;
         }
     }
 

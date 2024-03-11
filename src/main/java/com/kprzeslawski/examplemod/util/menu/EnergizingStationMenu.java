@@ -10,18 +10,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
+import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.ModTags;
-import com.mojang.datafixers.types.templates.Tag;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SmithingRecipe;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,18 +57,28 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     protected boolean mayPickup(Player pPlayer, boolean pHasStack) {
-        return false;
+        return true;
     }
 
     protected void onTake(Player pPlayer, ItemStack pStack) {
-        pStack.onCraftedBy(pPlayer.level(), pPlayer, pStack.getCount());
-        this.resultSlots.awardUsedRecipes(pPlayer, this.getRelevantItems());
+
+        ItemStack $$1 = this.inputSlots.getItem(0);
+        if(!($$1.getItem() instanceof ModedSwordItem))return;
+
+        //work without it :)
+        //may interfere with modsworditem oncrafted implementation
+        //pStack.onCraftedBy(pPlayer.level(), pPlayer, pStack.getCount());
+
+        ModedSwordItem.EnergizeUpgradeCost cost =
+                ((ModedSwordItem)ModItems.SW_1.get())
+                        .getNextUpgradeCost($$1);
+
         this.shrinkStackInSlot(0);
-        this.shrinkStackInSlot(1);
-        this.shrinkStackInSlot(2);
-        this.access.execute((p_40263_, p_40264_) -> {
-            p_40263_.levelEvent(1044, p_40264_, 0);
-        });
+
+        int rem = cost.upg_count;
+
+        rem = this.checkAndBalanceItems(2, rem, cost.upgrade_crystal);
+        this.checkAndBalanceItems(1, rem, cost.upgrade_crystal);
     }
 
     private List<ItemStack> getRelevantItems() {
@@ -83,14 +91,30 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
             $$1.shrink(1);
             this.inputSlots.setItem(pIndex, $$1);
         }
-
     }
+
+    private int checkAndBalanceItems(int pIndex, int rem, Item req) {
+        ItemStack $$1 = this.inputSlots.getItem(pIndex);
+        if(!$$1.is(req))return rem;
+
+        int min_take = Math.min(rem,$$1.getCount());
+        rem -= min_take;
+        $$1.shrink(min_take);
+        this.inputSlots.setItem(pIndex, $$1);
+        return rem;
+    }
+
 
     public void createResult() {
         ItemStack inp_w = this.inputSlots.getItem(0);
-        if(!(inp_w.getItem() instanceof ModedSwordItem))return;
-        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w))return;
- // TODO check if correctly validate possibility to upgrade
+        if(!(inp_w.getItem() instanceof ModedSwordItem)){
+            this.resultSlots.setItem(0, ItemStack.EMPTY);
+            return;
+        }
+        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w)){
+            this.resultSlots.setItem(0, ItemStack.EMPTY);
+            return;
+        }
 
         ItemStack res = inp_w.copy();
         res.getOrCreateTag().putInt(
