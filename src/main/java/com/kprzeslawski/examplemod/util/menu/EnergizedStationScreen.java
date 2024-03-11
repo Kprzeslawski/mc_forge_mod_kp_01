@@ -38,9 +38,9 @@ public class EnergizedStationScreen extends AbstractContainerScreen<EnergizingSt
                     ((ModedSwordItem)$$1.getItem()).getNextUpgradeCost($$1);
 
             if(upg.upg_count == 0 || upg.upgrade_crystal == null)return;
-            guiGraphics.drawString(this.font, "Required amount", x + 10, y + 20, 0);
-            guiGraphics.renderItem(new ItemStack(upg.upgrade_crystal, upg.upg_count), x+20, y+60);
-            guiGraphics.drawString(this.font, String.valueOf(upg.upg_count), x + 10, y + 40, 0);
+            guiGraphics.drawString(this.font, "Required amount", x + 8, y + 20,3618615,false);
+            guiGraphics.renderItem(new ItemStack(upg.upgrade_crystal, upg.upg_count), x+91, y+16);
+            guiGraphics.drawString(this.font, String.valueOf(upg.upg_count), x + 108, y + 20, 3618615, false);
 
         }
     }

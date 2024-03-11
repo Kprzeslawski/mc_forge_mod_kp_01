@@ -25,12 +25,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class EnergizingStationMenu extends ItemCombinerMenu {
 
-    public static final int TEMPLATE_SLOT_X_PLACEMENT = 8;
-    public static final int BASE_SLOT_X_PLACEMENT = 26;
-    public static final int ADDITIONAL_SLOT_X_PLACEMENT = 44;
-    private static final int RESULT_SLOT_X_PLACEMENT = 98;
-    public static final int SLOT_Y_PLACEMENT = 48;
-
     public EnergizingStationMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, ContainerLevelAccess.NULL);
     }
@@ -41,11 +35,15 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     protected @NotNull ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
         return ItemCombinerMenuSlotDefinition.create().withSlot(0, 8, 48, (p_266643_) -> {
             return p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG);
-        }).withSlot(1, 26, 48, (p_286208_) -> {
+        }).withSlot(1, 62, 40, (p_286208_) -> {
             return p_286208_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withSlot(2, 44, 48, (p_286207_) -> {
+        }).withSlot(2, 80, 40, (p_286207_) -> {
             return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withResultSlot(3, 98, 48).build();
+        }).withSlot(3, 62, 58, (p_286207_) -> {
+            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
+        }).withSlot(4, 80, 58, (p_286207_) -> {
+            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
+        }).withResultSlot(5, 134, 48).build();
     }
 
     protected boolean isValidBlock(BlockState pState) {
