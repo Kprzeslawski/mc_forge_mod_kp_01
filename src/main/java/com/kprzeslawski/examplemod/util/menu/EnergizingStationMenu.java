@@ -38,10 +38,6 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         super(ModMenu.ENERGIZING_STATION_MENU.get(), pContainerId, pPlayerInventory, pAccess);
     }
 
-//    public EnergizingStationMenu(@org.jetbrains.annotations.Nullable MenuType<?> pType, int pContainerId, Inventory pPlayerInventory, ContainerLevelAccess pAccess) {
-//        super(pType, pContainerId, pPlayerInventory, pAccess);
-//    }
-
     protected @NotNull ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
         return ItemCombinerMenuSlotDefinition.create().withSlot(0, 8, 48, (p_266643_) -> {
             return p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG);
@@ -57,7 +53,22 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     protected boolean mayPickup(Player pPlayer, boolean pHasStack) {
-        return true;
+
+        ItemStack $$1 = this.inputSlots.getItem(0);
+        if(!($$1.getItem() instanceof ModedSwordItem)) return false;
+
+        ModedSwordItem.EnergizeUpgradeCost upg =
+                ((ModedSwordItem)$$1.getItem()).getNextUpgradeCost($$1);
+
+        if(upg.upg_count == 0)return false;
+
+        int have = 0;
+
+        for(int i = 1; i < 3 ;i++)
+            if(this.inputSlots.getItem(i).is(upg.upgrade_crystal))
+                have += this.inputSlots.getItem(i).getCount();
+
+        return have >= upg.upg_count;
     }
 
     protected void onTake(Player pPlayer, ItemStack pStack) {
