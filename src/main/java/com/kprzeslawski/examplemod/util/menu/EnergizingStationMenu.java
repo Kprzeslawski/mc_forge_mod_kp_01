@@ -7,7 +7,6 @@ package com.kprzeslawski.examplemod.util.menu;
 
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.ModItems;
@@ -51,7 +50,10 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     protected boolean mayPickup(Player pPlayer, boolean pHasStack) {
+        return possible_to_pickup();
+    }
 
+    protected boolean possible_to_pickup(){
         ItemStack $$1 = this.inputSlots.getItem(0);
         if(!($$1.getItem() instanceof ModedSwordItem)) return false;
 

@@ -42,6 +42,8 @@ public class EnergizedStationScreen extends AbstractContainerScreen<EnergizingSt
             guiGraphics.renderItem(new ItemStack(upg.upgrade_crystal, upg.upg_count), x+91, y+16);
             guiGraphics.drawString(this.font, String.valueOf(upg.upg_count), x + 108, y + 20, 3618615, false);
 
+            if(!((EnergizingStationMenu)this.menu).possible_to_pickup())
+                guiGraphics.blit(TEXTURE, x + 101, y + 46, this.imageWidth, 0, 28, 21);
         }
     }
 
