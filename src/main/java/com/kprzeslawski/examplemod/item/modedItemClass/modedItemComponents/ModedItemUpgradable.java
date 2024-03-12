@@ -8,9 +8,9 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public interface ModedItemUpgradable {
-
-    public final List<? extends Multimap<Attribute, AttributeModifier>> modifiers = null;
-    public final List<EnergizeUpgradeCost> upgrade_ingredients = null;
+    public static final String ENERGIZE_TAG = "ENERGIZE_LEVEL";
+    public List<? extends Multimap<Attribute, AttributeModifier>> modifiers = null;
+    public List<EnergizeUpgradeCost> upgrade_ingredients = null;
 
     public boolean isUpgradable(ItemStack itemStack);
     public EnergizeUpgradeCost getNextUpgradeCost(ItemStack itemStack);

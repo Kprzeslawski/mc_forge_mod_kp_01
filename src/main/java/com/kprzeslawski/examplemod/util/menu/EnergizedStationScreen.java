@@ -1,8 +1,8 @@
 package com.kprzeslawski.examplemod.util.menu;
 
 import com.kprzeslawski.examplemod.ExampleMod;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ModedItemUpgradable;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -36,7 +36,7 @@ public class EnergizedStationScreen extends AbstractContainerScreen<EnergizingSt
 
         if(!$$1.isEmpty()){
             EnergizeUpgradeCost upg =
-                    ((ModedSwordItem)$$1.getItem()).getNextUpgradeCost($$1);
+                    ((ModedItemUpgradable)$$1.getItem()).getNextUpgradeCost($$1);
 
             if(upg.upg_count == 0 || upg.upgrade_crystal == null)return;
             guiGraphics.drawString(this.font, "Required amount", x + 8, y + 20,3618615,false);

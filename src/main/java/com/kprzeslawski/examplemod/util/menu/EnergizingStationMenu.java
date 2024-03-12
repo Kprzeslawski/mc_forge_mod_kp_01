@@ -6,8 +6,8 @@ package com.kprzeslawski.examplemod.util.menu;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.ModItems;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ModedItemUpgradable;
 import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.ModTags;
 import net.minecraft.world.entity.player.Inventory;
@@ -29,7 +29,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 
     protected @NotNull ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
         return ItemCombinerMenuSlotDefinition.create()
-                .withSlot(0, 8, 48, (p_266643_) -> p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG))
+                .withSlot(0, 8, 48, (p_266643_) -> p_266643_.getOrCreateTag().contains(ModedItemUpgradable.ENERGIZE_TAG))
                 .withSlot(1, 62, 40, (p_286208_) -> p_286208_.is(ModTags.Items.ENERGY_CRYSTAL))
                 .withSlot(2, 80, 40, (p_286207_) -> p_286207_.is(ModTags.Items.ENERGY_CRYSTAL))
                 .withSlot(3, 62, 58, (p_286207_) -> p_286207_.is(ModTags.Items.ENERGY_CRYSTAL))
@@ -47,10 +47,10 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 
     protected boolean possible_to_pickup(){
         ItemStack $$1 = this.inputSlots.getItem(0);
-        if(!($$1.getItem() instanceof ModedSwordItem)) return false;
+        if(!($$1.getItem() instanceof ModedItemUpgradable)) return false;
 
         EnergizeUpgradeCost upg =
-                ((ModedSwordItem)$$1.getItem()).getNextUpgradeCost($$1);
+                ((ModedItemUpgradable)$$1.getItem()).getNextUpgradeCost($$1);
 
         if(upg.upg_count == 0)return false;
 
@@ -66,10 +66,10 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     protected void onTake(@NotNull Player pPlayer, @NotNull ItemStack pStack) {
 
         ItemStack $$1 = this.inputSlots.getItem(0);
-        if(!($$1.getItem() instanceof ModedSwordItem))return;
+        if(!($$1.getItem() instanceof ModedItemUpgradable))return;
 
         EnergizeUpgradeCost cost =
-                ((ModedSwordItem)ModItems.SW_1.get())
+                ((ModedItemUpgradable)ModItems.SW_1.get())
                         .getNextUpgradeCost($$1);
 
         $$1.shrink(1);
@@ -94,19 +94,19 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 
     public void createResult() {
         ItemStack inp_w = this.inputSlots.getItem(0);
-        if(!(inp_w.getItem() instanceof ModedSwordItem)){
+        if(!(inp_w.getItem() instanceof ModedItemUpgradable)){
             this.resultSlots.setItem(0, ItemStack.EMPTY);
             return;
         }
-        if(!((ModedSwordItem)inp_w.getItem()).isUpgradable(inp_w)){
+        if(!((ModedItemUpgradable)inp_w.getItem()).isUpgradable(inp_w)){
             this.resultSlots.setItem(0, ItemStack.EMPTY);
             return;
         }
 
         ItemStack res = inp_w.copy();
         res.getOrCreateTag().putInt(
-                ModedSwordItem.ENERGIZE_TAG,
-                res.getOrCreateTag().getInt(ModedSwordItem.ENERGIZE_TAG) + 1
+                ModedItemUpgradable.ENERGIZE_TAG,
+                res.getOrCreateTag().getInt(ModedItemUpgradable.ENERGIZE_TAG) + 1
         );
         this.resultSlots.setItem(0, res);
     }

@@ -4,6 +4,7 @@ import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
@@ -51,10 +52,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
             () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
-                    new ModedSwordItem.ReinforcedLevelProps(1,1,1),
-                    new ModedSwordItem.ReinforcedLevelProps(2,1,2),
-                    new ModedSwordItem.ReinforcedLevelProps(3,1,3),
-                    new ModedSwordItem.ReinforcedLevelProps(4,1,4)
+                    new ReinforcedLevelProps(1,1,1),
+                    new ReinforcedLevelProps(2,1,2),
+                    new ReinforcedLevelProps(3,1,3),
+                    new ReinforcedLevelProps(4,1,4)
             ),
                     Arrays.asList(
                             new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
