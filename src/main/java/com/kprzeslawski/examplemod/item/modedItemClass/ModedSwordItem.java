@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -107,17 +108,6 @@ public class ModedSwordItem extends SwordItem {
             this.attack_dmg = attack_dmg;
             this.attack_speed = attack_speed;
             this.range_bonus = range_bonus;
-        }
-    }
-
-    public static class EnergizeUpgradeCost {
-        @Nullable
-        public Item upgrade_crystal;
-        public int upg_count;
-
-        public EnergizeUpgradeCost(Item item, int i) {
-            upgrade_crystal = item;
-            upg_count = i;
         }
     }
 

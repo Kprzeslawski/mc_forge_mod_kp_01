@@ -3,6 +3,7 @@ package com.kprzeslawski.examplemod.item;
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
@@ -56,10 +57,10 @@ public class ModItems {
                     new ModedSwordItem.ReinforcedLevelProps(4,1,4)
             ),
                     Arrays.asList(
-                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
-                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
-                            new ModedSwordItem.EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
-                            new ModedSwordItem.EnergizeUpgradeCost(null,0)
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(null,0)
                     )
             ));
 

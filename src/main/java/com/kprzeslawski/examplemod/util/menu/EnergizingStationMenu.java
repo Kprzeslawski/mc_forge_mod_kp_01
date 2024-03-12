@@ -7,6 +7,7 @@ package com.kprzeslawski.examplemod.util.menu;
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
+import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.ModTags;
 import net.minecraft.world.entity.player.Inventory;
@@ -48,7 +49,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         ItemStack $$1 = this.inputSlots.getItem(0);
         if(!($$1.getItem() instanceof ModedSwordItem)) return false;
 
-        ModedSwordItem.EnergizeUpgradeCost upg =
+        EnergizeUpgradeCost upg =
                 ((ModedSwordItem)$$1.getItem()).getNextUpgradeCost($$1);
 
         if(upg.upg_count == 0)return false;
@@ -67,7 +68,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         ItemStack $$1 = this.inputSlots.getItem(0);
         if(!($$1.getItem() instanceof ModedSwordItem))return;
 
-        ModedSwordItem.EnergizeUpgradeCost cost =
+        EnergizeUpgradeCost cost =
                 ((ModedSwordItem)ModItems.SW_1.get())
                         .getNextUpgradeCost($$1);
 
