@@ -4,10 +4,6 @@ package com.kprzeslawski.examplemod.util.menu;
 // (powered by FernFlower decompiler)
 //
 
-
-import java.util.List;
-import java.util.Optional;
-
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
@@ -18,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,24 +27,20 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
     }
 
     protected @NotNull ItemCombinerMenuSlotDefinition createInputSlotDefinitions() {
-        return ItemCombinerMenuSlotDefinition.create().withSlot(0, 8, 48, (p_266643_) -> {
-            return p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG);
-        }).withSlot(1, 62, 40, (p_286208_) -> {
-            return p_286208_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withSlot(2, 80, 40, (p_286207_) -> {
-            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withSlot(3, 62, 58, (p_286207_) -> {
-            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withSlot(4, 80, 58, (p_286207_) -> {
-            return p_286207_.is(ModTags.Items.ENERGY_CRYSTAL);
-        }).withResultSlot(5, 134, 48).build();
+        return ItemCombinerMenuSlotDefinition.create()
+                .withSlot(0, 8, 48, (p_266643_) -> p_266643_.getOrCreateTag().contains(ModedSwordItem.ENERGIZE_TAG))
+                .withSlot(1, 62, 40, (p_286208_) -> p_286208_.is(ModTags.Items.ENERGY_CRYSTAL))
+                .withSlot(2, 80, 40, (p_286207_) -> p_286207_.is(ModTags.Items.ENERGY_CRYSTAL))
+                .withSlot(3, 62, 58, (p_286207_) -> p_286207_.is(ModTags.Items.ENERGY_CRYSTAL))
+                .withSlot(4, 80, 58, (p_286207_) -> p_286207_.is(ModTags.Items.ENERGY_CRYSTAL))
+                .withResultSlot(5, 134, 48).build();
     }
 
     protected boolean isValidBlock(BlockState pState) {
         return pState.is(ModBlocks.ENERGIZING_STATION_BLOCK.get());
     }
 
-    protected boolean mayPickup(Player pPlayer, boolean pHasStack) {
+    protected boolean mayPickup(@NotNull Player pPlayer, boolean pHasStack) {
         return possible_to_pickup();
     }
 
@@ -64,44 +55,29 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
 
         int have = 0;
 
-        for(int i = 1; i < 3 ;i++)
+        for(int i = 1; i < 5 ;i++)
             if(this.inputSlots.getItem(i).is(upg.upgrade_crystal))
                 have += this.inputSlots.getItem(i).getCount();
 
         return have >= upg.upg_count;
     }
 
-    protected void onTake(Player pPlayer, ItemStack pStack) {
+    protected void onTake(@NotNull Player pPlayer, @NotNull ItemStack pStack) {
 
         ItemStack $$1 = this.inputSlots.getItem(0);
         if(!($$1.getItem() instanceof ModedSwordItem))return;
-
-        //work without it :)
-        //may interfere with modsworditem oncrafted implementation
-        //pStack.onCraftedBy(pPlayer.level(), pPlayer, pStack.getCount());
 
         ModedSwordItem.EnergizeUpgradeCost cost =
                 ((ModedSwordItem)ModItems.SW_1.get())
                         .getNextUpgradeCost($$1);
 
-        this.shrinkStackInSlot(0);
+        $$1.shrink(1);
+        this.inputSlots.setItem(0, $$1);
 
         int rem = cost.upg_count;
 
-        rem = this.checkAndBalanceItems(2, rem, cost.upgrade_crystal);
-        this.checkAndBalanceItems(1, rem, cost.upgrade_crystal);
-    }
-
-    private List<ItemStack> getRelevantItems() {
-        return List.of(this.inputSlots.getItem(0), this.inputSlots.getItem(1), this.inputSlots.getItem(2));
-    }
-
-    private void shrinkStackInSlot(int pIndex) {
-        ItemStack $$1 = this.inputSlots.getItem(pIndex);
-        if (!$$1.isEmpty()) {
-            $$1.shrink(1);
-            this.inputSlots.setItem(pIndex, $$1);
-        }
+        for(int i = 4; i > 0; i--)
+            rem = this.checkAndBalanceItems(i, rem, cost.upgrade_crystal);
     }
 
     private int checkAndBalanceItems(int pIndex, int rem, Item req) {
@@ -114,7 +90,6 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         this.inputSlots.setItem(pIndex, $$1);
         return rem;
     }
-
 
     public void createResult() {
         ItemStack inp_w = this.inputSlots.getItem(0);
@@ -135,31 +110,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         this.resultSlots.setItem(0, res);
     }
 
-    public int getSlotToQuickMoveTo(ItemStack pStack) {
-//        return (Integer)((Optional)this.recipes.stream().map((p_266640_) -> {
-//            return findSlotMatchingIngredient(p_266640_, pStack);
-//        }).filter(Optional::isPresent).findFirst().orElse(Optional.of(0))).get();
-        return 0;
-    }
-
-    private static Optional<Integer> findSlotMatchingIngredient(SmithingRecipe pRecipe, ItemStack pStack) {
-        if (pRecipe.isTemplateIngredient(pStack)) {
-            return Optional.of(0);
-        } else if (pRecipe.isBaseIngredient(pStack)) {
-            return Optional.of(1);
-        } else {
-            return pRecipe.isAdditionIngredient(pStack) ? Optional.of(2) : Optional.empty();
-        }
-    }
-
-    public boolean canTakeItemForPickAll(ItemStack pStack, Slot pSlot) {
+    public boolean canTakeItemForPickAll(@NotNull ItemStack pStack, Slot pSlot) {
         return pSlot.container != this.resultSlots && super.canTakeItemForPickAll(pStack, pSlot);
-    }
-
-    public boolean canMoveIntoInputSlots(ItemStack pStack) {
-//        return this.recipes.stream().map((p_266647_) -> {
-//            return findSlotMatchingIngredient(p_266647_, pStack);
-//        }).anyMatch(Optional::isPresent);
-        return false;
     }
 }
