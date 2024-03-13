@@ -49,6 +49,9 @@ public class ModCreativeModTabs {
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(3));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(4));
 
+                        pOutput.accept(ModItems.GAUNTLET.get().getDefaultInstance());
+                        pOutput.accept(((ModedSwordItem)ModItems.GAUNTLET.get()).getInstance(4));
+
 //                        pOutput.accept(ModItems.TR_1.get().getDefaultInstance());
 //                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(2));
 //                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(3));

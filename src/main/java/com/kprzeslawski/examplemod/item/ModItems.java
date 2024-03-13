@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.item;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedGauntletItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
@@ -108,6 +109,20 @@ public class ModItems {
                     )
             ));
 
+    public static final RegistryObject<Item> GAUNTLET = ITEMS.register("gauntlet",
+            () -> new ModedGauntletItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
+                    new ReinforcedLevelProps().setBaseUUID().aD(15).aS(-3.9).aR(-2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(30).aS(-8.9).aR(-2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(40).aS(-12.9).aR(-2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(50).aS(-42.9).aR(-2)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
     public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
             () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
                     new ReinforcedLevelProps().setBaseUUID().aD(1).aS(1).aR(1),
