@@ -2,18 +2,14 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
@@ -66,18 +62,7 @@ public class ModedGauntletItem extends ModedSwordItem{
                             $$4.move(MoverType.SELF, new Vec3(0.0, 1.1999999284744263, 0.0));
                         }
 
-                        SoundEvent $$18;
-                        if ($$6 >= 3) {
-                            $$18 = SoundEvents.TRIDENT_RIPTIDE_3;
-                        } else if ($$6 == 2) {
-                            $$18 = SoundEvents.TRIDENT_RIPTIDE_2;
-                        } else {
-                            $$18 = SoundEvents.TRIDENT_RIPTIDE_1;
-                        }
-
-                        pLevel.playSound((Player)null, $$4, $$18, SoundSource.PLAYERS, 1.0F, 1.0F);
-
-
+                        pLevel.playSound((Player)null, $$4, SoundEvents.TRIDENT_RIPTIDE_1, SoundSource.PLAYERS, 1.0F, 1.0F);
 
             }
         }
