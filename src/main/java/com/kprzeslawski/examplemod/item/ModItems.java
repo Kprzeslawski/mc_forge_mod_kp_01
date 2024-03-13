@@ -27,15 +27,6 @@ public class ModItems {
     public static final RegistryObject<Item> TANGERINE_INGOT = ITEMS.register("tangerine_ingot",
             () -> new Item(new Item.Properties()));
 
-
-    public static final RegistryObject<Item> TANGERINE_HELMET = ITEMS.register("tangerine_helmet",
-            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final RegistryObject<Item> TANGERINE_CHESTPLATE = ITEMS.register("tangerine_chestplate",
-            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-    public static final RegistryObject<Item> TANGERINE_LEGGINGS = ITEMS.register("tangerine_leggings",
-            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-    public static final RegistryObject<Item> TANGERINE_BOOTS = ITEMS.register("tangerine_boots",
-            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.BOOTS, new Item.Properties()));
     public static final RegistryObject<Item> ESSENCE_T1 = ITEMS.register("essence_t1",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ESSENCE_T2 = ITEMS.register("essence_t2",
@@ -51,12 +42,78 @@ public class ModItems {
     public static final RegistryObject<Item> ESSENCE_T7 = ITEMS.register("essence_t7",
             () -> new Item(new Item.Properties()));
 
+
+    public static final RegistryObject<Item> TANGERINE_HELMET = ITEMS.register("tangerine_helmet",
+            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.HELMET, new Item.Properties(),Arrays.asList(
+                            new ReinforcedLevelProps().aHp(0),
+                            new ReinforcedLevelProps().aHp(1),
+                            new ReinforcedLevelProps().aHp(2),
+                            new ReinforcedLevelProps().aHp(3),
+                            new ReinforcedLevelProps().aHp(4)
+                    ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T4.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+                    ));
+    public static final RegistryObject<Item> TANGERINE_CHESTPLATE = ITEMS.register("tangerine_chestplate",
+            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.CHESTPLATE, new Item.Properties(),Arrays.asList(
+                    new ReinforcedLevelProps().aHp(0),
+                    new ReinforcedLevelProps().aHp(1),
+                    new ReinforcedLevelProps().aHp(2),
+                    new ReinforcedLevelProps().aHp(3),
+                    new ReinforcedLevelProps().aHp(4)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T4.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+    public static final RegistryObject<Item> TANGERINE_LEGGINGS = ITEMS.register("tangerine_leggings",
+            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.LEGGINGS, new Item.Properties(),Arrays.asList(
+                    new ReinforcedLevelProps().aHp(0),
+                    new ReinforcedLevelProps().aHp(1),
+                    new ReinforcedLevelProps().aHp(2),
+                    new ReinforcedLevelProps().aHp(3),
+                    new ReinforcedLevelProps().aHp(4)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T4.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+    public static final RegistryObject<Item> TANGERINE_BOOTS = ITEMS.register("tangerine_boots",
+            () -> new ModedArmor(ModArmorMaterial.TANGERINE, ArmorItem.Type.BOOTS, new Item.Properties(),Arrays.asList(
+                    new ReinforcedLevelProps().aHp(0),
+                    new ReinforcedLevelProps().aHp(1),
+                    new ReinforcedLevelProps().aHp(2),
+                    new ReinforcedLevelProps().aHp(3),
+                    new ReinforcedLevelProps().aHp(4)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T4.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+
     public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
             () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
-                    new ReinforcedLevelProps(1,1,1),
-                    new ReinforcedLevelProps(2,1,2),
-                    new ReinforcedLevelProps(3,1,3),
-                    new ReinforcedLevelProps(4,1,4)
+                    new ReinforcedLevelProps().setBaseUUID().aD(1).aS(1).aR(1),
+                    new ReinforcedLevelProps().setBaseUUID().aD(2).aS(1).aR(2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(3).aS(1).aR(3),
+                    new ReinforcedLevelProps().setBaseUUID().aD(4).aS(1).aR(4)
             ),
                     Arrays.asList(
                             new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
@@ -66,21 +123,21 @@ public class ModItems {
                     )
             ));
 
-    public static final RegistryObject<Item> TR_1 = ITEMS.register("tr_1",
-            () ->  new ModedTridentItem( new Item.Properties(),
-                            Arrays.asList(
-                            new ReinforcedLevelProps(1,1,1),
-                            new ReinforcedLevelProps(2,1,2),
-                            new ReinforcedLevelProps(3,1,3),
-                            new ReinforcedLevelProps(4,1,4)
-                    ),
-                    Arrays.asList(
-                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
-                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
-                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
-                            new EnergizeUpgradeCost(null,0)
-                    )
-            ));
+//    public static final RegistryObject<Item> TR_1 = ITEMS.register("tr_1",
+//            () ->  new ModedTridentItem( new Item.Properties(),
+//                            Arrays.asList(
+//                            new ReinforcedLevelProps(1,1,1),
+//                            new ReinforcedLevelProps(2,1,2),
+//                            new ReinforcedLevelProps(3,1,3),
+//                            new ReinforcedLevelProps(4,1,4)
+//                    ),
+//                    Arrays.asList(
+//                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+//                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+//                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+//                            new EnergizeUpgradeCost(null,0)
+//                    )
+//            ));
 
 
     public static void register(IEventBus eventBus){

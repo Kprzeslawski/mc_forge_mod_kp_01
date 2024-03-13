@@ -16,10 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 public class ModedSwordItem extends SwordItem implements ModedItemUpgradable {
 
-    private final List<? extends Multimap<Attribute, AttributeModifier>> modifiers;
+    private final List<Multimap<Attribute, AttributeModifier>> modifiers;
     public final List<EnergizeUpgradeCost> upgrade_ingredients;
 
     public ModedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, List<ReinforcedLevelProps> attributes, List<EnergizeUpgradeCost> upgradeIngredients) {
@@ -27,10 +28,16 @@ public class ModedSwordItem extends SwordItem implements ModedItemUpgradable {
         if(attributes.size() != upgradeIngredients.size())
             throw new RuntimeException("Incorrect definition of upgrade props and ingredients in modSwordItemClass");
 
-        this.modifiers = attributes.stream().map(
-                arg -> arg.convertToAttributeModifier(BASE_ATTACK_DAMAGE_UUID,BASE_ATTACK_SPEED_UUID)
-        ).toList();
+        this.modifiers = attributes.stream().map(ReinforcedLevelProps::getMap).toList();
         this.upgrade_ingredients = upgradeIngredients;
+    }
+
+    public static UUID getAUUID(){
+        return BASE_ATTACK_DAMAGE_UUID;
+    }
+
+    public static UUID getASUUID(){
+        return BASE_ATTACK_DAMAGE_UUID;
     }
 
     public @NotNull ItemStack getDefaultInstance() {

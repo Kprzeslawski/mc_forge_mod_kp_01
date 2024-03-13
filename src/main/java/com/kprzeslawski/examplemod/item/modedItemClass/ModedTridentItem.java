@@ -43,9 +43,7 @@ public class ModedTridentItem extends TridentItem implements ModedItemUpgradable
         if(attributes.size() != upgradeIngredients.size())
             throw new RuntimeException("Incorrect definition of upgrade props and ingredients in modSwordItemClass");
 
-        this.modifiers = attributes.stream().map(
-                arg -> arg.convertToAttributeModifier(BASE_ATTACK_DAMAGE_UUID,BASE_ATTACK_SPEED_UUID)
-        ).toList();
+        this.modifiers = attributes.stream().map(ReinforcedLevelProps::getMap).toList();
         this.upgrade_ingredients = upgradeIngredients;
     }
 

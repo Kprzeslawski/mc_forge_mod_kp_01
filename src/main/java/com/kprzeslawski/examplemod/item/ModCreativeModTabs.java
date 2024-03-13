@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.item;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.block.ModBlocks;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
 import net.minecraft.core.registries.Registries;
@@ -33,20 +34,25 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.TANGERINE_UPGRADE.get());
                         pOutput.accept(ModBlocks.END_STONE_TANGERINE_ORE.get());
 
-                        pOutput.accept(ModItems.TANGERINE_HELMET.get());
-                        pOutput.accept(ModItems.TANGERINE_CHESTPLATE.get());
-                        pOutput.accept(ModItems.TANGERINE_LEGGINGS.get());
-                        pOutput.accept(ModItems.TANGERINE_BOOTS.get());
+                        pOutput.accept(ModItems.TANGERINE_HELMET.get().getDefaultInstance());
+                        pOutput.accept(ModItems.TANGERINE_CHESTPLATE.get().getDefaultInstance());
+                        pOutput.accept(ModItems.TANGERINE_LEGGINGS.get().getDefaultInstance());
+                        pOutput.accept(ModItems.TANGERINE_BOOTS.get().getDefaultInstance());
+
+                        pOutput.accept(((ModedArmor)ModItems.TANGERINE_HELMET.get()).getInstance(5));
+                        pOutput.accept(((ModedArmor)ModItems.TANGERINE_CHESTPLATE.get()).getInstance(5));
+                        pOutput.accept(((ModedArmor)ModItems.TANGERINE_LEGGINGS.get()).getInstance(5));
+                        pOutput.accept(((ModedArmor)ModItems.TANGERINE_BOOTS.get()).getInstance(5));
 
                         pOutput.accept(ModItems.SW_1.get().getDefaultInstance());
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(2));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(3));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(4));
 
-                        pOutput.accept(ModItems.TR_1.get().getDefaultInstance());
-                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(2));
-                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(3));
-                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(4));
+//                        pOutput.accept(ModItems.TR_1.get().getDefaultInstance());
+//                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(2));
+//                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(3));
+//                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(4));
 
                         pOutput.accept(ModBlocks.ENERGIZING_STATION_BLOCK.get());
                     })
