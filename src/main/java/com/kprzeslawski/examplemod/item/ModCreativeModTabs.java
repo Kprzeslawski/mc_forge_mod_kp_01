@@ -3,6 +3,7 @@ package com.kprzeslawski.examplemod.item;
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -41,6 +42,11 @@ public class ModCreativeModTabs {
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(2));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(3));
                         pOutput.accept(((ModedSwordItem)ModItems.SW_1.get()).getInstance(4));
+
+                        pOutput.accept(ModItems.TR_1.get().getDefaultInstance());
+                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(2));
+                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(3));
+                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(4));
 
                         pOutput.accept(ModBlocks.ENERGIZING_STATION_BLOCK.get());
                     })

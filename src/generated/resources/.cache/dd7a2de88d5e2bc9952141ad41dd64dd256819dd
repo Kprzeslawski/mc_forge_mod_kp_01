@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-07T19:46:14.4188227	Item Models: examplemod
+// 1.20.1	2024-03-12T22:37:26.2391278	Item Models: examplemod
 8d9710e8332f965fd5e4d502a7547cc8eb7de962 assets/examplemod/models/item/essence_t1.json
 f9b477842efbdb0683095449a2ed5f2f7d714a19 assets/examplemod/models/item/essence_t2.json
 6aa5e32198fcf7da6808d7611cd6782c1697f338 assets/examplemod/models/item/essence_t3.json
@@ -54,3 +54,4 @@ dcde9e639f0b3e538fbddcd30622150f6dbcaf8d assets/examplemod/models/item/tangerine
 e14b43939054407ab0b33110fdfbd4f544112158 assets/examplemod/models/item/tangerine_leggings_quartz_trim.json
 21958ae497288b357d4badf5e03f71eb66246ad4 assets/examplemod/models/item/tangerine_leggings_redstone_trim.json
 e97949f7d9fd47dc833a1795dc6829a18ceaeb63 assets/examplemod/models/item/tangerine_upgrade.json
+e276b99c71f385d0386efc3c85fcf356ceddb4de assets/examplemod/models/item/tr_1.json

@@ -5,7 +5,6 @@ package com.kprzeslawski.examplemod.util.menu;
 //
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
-import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ModedItemUpgradable;
 import com.kprzeslawski.examplemod.util.ModMenu;
@@ -69,7 +68,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
         if(!($$1.getItem() instanceof ModedItemUpgradable))return;
 
         EnergizeUpgradeCost cost =
-                ((ModedItemUpgradable)ModItems.SW_1.get())
+                ((ModedItemUpgradable)$$1.getItem())
                         .getNextUpgradeCost($$1);
 
         $$1.shrink(1);
@@ -98,7 +97,7 @@ public class EnergizingStationMenu extends ItemCombinerMenu {
             this.resultSlots.setItem(0, ItemStack.EMPTY);
             return;
         }
-        if(!((ModedItemUpgradable)inp_w.getItem()).isUpgradable(inp_w)){
+        if(((ModedItemUpgradable) inp_w.getItem()).isNUpgradable(inp_w)){
             this.resultSlots.setItem(0, ItemStack.EMPTY);
             return;
         }

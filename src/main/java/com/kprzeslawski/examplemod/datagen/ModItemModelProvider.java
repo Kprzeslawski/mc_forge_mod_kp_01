@@ -45,7 +45,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.TANGERINE_INGOT);
         simpleItem(ModItems.TANGERINE_UPGRADE);
 
+
+
         handheldItem(ModItems.SW_1);
+        handheldItem(ModItems.TR_1);
 
         trimmedArmorItem(ModItems.TANGERINE_HELMET);
         trimmedArmorItem(ModItems.TANGERINE_CHESTPLATE);

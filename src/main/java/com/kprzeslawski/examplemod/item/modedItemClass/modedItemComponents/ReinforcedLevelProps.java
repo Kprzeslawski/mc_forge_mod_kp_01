@@ -21,10 +21,12 @@ public class ReinforcedLevelProps {
     }
 
     public Multimap<Attribute, AttributeModifier> convertToAttributeModifier(
+            UUID damageUUID,
+            UUID aSpeedUUID
     ){
         ImmutableMultimap.Builder<Attribute, AttributeModifier> res = ImmutableMultimap.builder();
-        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(new UUID(1,1), "Weapon modifier", this.attack_speed, AttributeModifier.Operation.ADDITION));
-        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(new UUID(1,1), "Weapon modifier", this.attack_dmg, AttributeModifier.Operation.ADDITION));
+        res.put(Attributes.ATTACK_SPEED, new AttributeModifier(aSpeedUUID, "Weapon modifier", this.attack_speed, AttributeModifier.Operation.ADDITION));
+        res.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(damageUUID, "Weapon modifier", this.attack_dmg, AttributeModifier.Operation.ADDITION));
         res.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", this.range_bonus,AttributeModifier.Operation.ADDITION));
         res.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(new UUID(1,1),"Weapon modifier", this.range_bonus,AttributeModifier.Operation.ADDITION));
         return res.build();

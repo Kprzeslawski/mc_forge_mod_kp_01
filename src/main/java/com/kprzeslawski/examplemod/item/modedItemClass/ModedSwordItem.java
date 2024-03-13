@@ -1,6 +1,5 @@
 package com.kprzeslawski.examplemod.item.modedItemClass;
 
-import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ModedItemUpgradable;
@@ -10,16 +9,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.UUID;
 
 public class ModedSwordItem extends SwordItem implements ModedItemUpgradable {
 
@@ -31,7 +27,9 @@ public class ModedSwordItem extends SwordItem implements ModedItemUpgradable {
         if(attributes.size() != upgradeIngredients.size())
             throw new RuntimeException("Incorrect definition of upgrade props and ingredients in modSwordItemClass");
 
-        this.modifiers = attributes.stream().map(ReinforcedLevelProps::convertToAttributeModifier).toList();
+        this.modifiers = attributes.stream().map(
+                arg -> arg.convertToAttributeModifier(BASE_ATTACK_DAMAGE_UUID,BASE_ATTACK_SPEED_UUID)
+        ).toList();
         this.upgrade_ingredients = upgradeIngredients;
     }
 
@@ -78,12 +76,12 @@ public class ModedSwordItem extends SwordItem implements ModedItemUpgradable {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
-    public boolean isUpgradable(ItemStack itemStack){
-        return itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) > 0 &&
-            itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) < upgrade_ingredients.size();
+    public boolean isNUpgradable(ItemStack itemStack){
+        return itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) <= 0 ||
+                itemStack.getOrCreateTag().getInt(ENERGIZE_TAG) >= upgrade_ingredients.size();
     }
     public EnergizeUpgradeCost getNextUpgradeCost(ItemStack itemStack){
-        if(!isUpgradable(itemStack))
+        if(isNUpgradable(itemStack))
             new EnergizeUpgradeCost(null,0);
         return upgrade_ingredients.get(itemStack.getOrCreateTag().getInt(ENERGIZE_TAG)-1);
     }

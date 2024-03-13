@@ -3,6 +3,7 @@ package com.kprzeslawski.examplemod.item;
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
+import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
 import net.minecraft.world.item.ArmorItem;
@@ -57,6 +58,22 @@ public class ModItems {
                     new ReinforcedLevelProps(3,1,3),
                     new ReinforcedLevelProps(4,1,4)
             ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+
+    public static final RegistryObject<Item> TR_1 = ITEMS.register("tr_1",
+            () ->  new ModedTridentItem( new Item.Properties(),
+                            Arrays.asList(
+                            new ReinforcedLevelProps(1,1,1),
+                            new ReinforcedLevelProps(2,1,2),
+                            new ReinforcedLevelProps(3,1,3),
+                            new ReinforcedLevelProps(4,1,4)
+                    ),
                     Arrays.asList(
                             new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
                             new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
