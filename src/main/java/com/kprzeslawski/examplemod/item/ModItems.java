@@ -1,10 +1,7 @@
 package com.kprzeslawski.examplemod.item;
 
 import com.kprzeslawski.examplemod.ExampleMod;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedGauntletItem;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
+import com.kprzeslawski.examplemod.item.modedItemClass.*;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
 import net.minecraft.world.item.ArmorItem;
@@ -112,9 +109,9 @@ public class ModItems {
     public static final RegistryObject<Item> GAUNTLET = ITEMS.register("gauntlet",
             () -> new ModedGauntletItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
                     new ReinforcedLevelProps().setBaseUUID().aD(15).aS(-3.9).aR(-2),
-                    new ReinforcedLevelProps().setBaseUUID().aD(30).aS(-8.9).aR(-2),
-                    new ReinforcedLevelProps().setBaseUUID().aD(40).aS(-12.9).aR(-2),
-                    new ReinforcedLevelProps().setBaseUUID().aD(50).aS(-42.9).aR(-2)
+                    new ReinforcedLevelProps().setBaseUUID().aD(30).aS(-4).aR(-2), // -4(-3) is a threshold
+                    new ReinforcedLevelProps().setBaseUUID().aD(40).aS(-4.9).aR(-2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(50).aS(-3.98).aR(-2)
             ),
                     Arrays.asList(
                             new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
@@ -125,6 +122,21 @@ public class ModItems {
             ));
     public static final RegistryObject<Item> SW_1 = ITEMS.register("sw_1",
             () -> new ModedSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
+                    new ReinforcedLevelProps().setBaseUUID().aD(1).aS(1).aR(1),
+                    new ReinforcedLevelProps().setBaseUUID().aD(2).aS(1).aR(2),
+                    new ReinforcedLevelProps().setBaseUUID().aD(3).aS(1).aR(3),
+                    new ReinforcedLevelProps().setBaseUUID().aD(4).aS(1).aR(4)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+
+    public static final RegistryObject<Item> SW_2 = ITEMS.register("sw_2",
+            () -> new ModedSamuraiSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
                     new ReinforcedLevelProps().setBaseUUID().aD(1).aS(1).aR(1),
                     new ReinforcedLevelProps().setBaseUUID().aD(2).aS(1).aR(2),
                     new ReinforcedLevelProps().setBaseUUID().aD(3).aS(1).aR(3),
