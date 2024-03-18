@@ -6,7 +6,7 @@ import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.loot.ModLootModifiers;
 import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.menu.EnergizedStationScreen;
-import com.mojang.logging.LogUtils;
+import com.kprzeslawski.examplemod.world.ModMobEffects;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ExampleMod.MOD_ID)
@@ -35,6 +34,7 @@ public class ExampleMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModMobEffects.register(modEventBus);
         ModLootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
