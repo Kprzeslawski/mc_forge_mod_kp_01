@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-19T22:38:13.7954847	Global Loot Modifiers : examplemod
-4cc32475b92130301c6fee4e68a221f2a6fd71e7 data/examplemod/loot_modifiers/t1_crystal.json
+// 1.20.1	2024-06-19T22:41:50.5006497	Global Loot Modifiers : examplemod
+57ec280c7ef7f1f1f152d4683bc054f843bc0ecd data/examplemod/loot_modifiers/t1_crystal.json
 ff439d852d60c629874a5921fa402b964d408d4f data/examplemod/loot_modifiers/template_from_chests.json
 db2cc0dfe5bfdec82a3f061e26e3c42f9e2a2ca1 data/forge/loot_modifiers/global_loot_modifiers.json

@@ -24,7 +24,9 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
         add("t1_crystal", new AddItemModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(new ResourceLocation("entities/zombie"))
-                        .or(new LootTableIdCondition.Builder(new ResourceLocation("entities/skeleton"))).build(),
+                        .or(new LootTableIdCondition.Builder(new ResourceLocation("entities/skeleton")))
+                        .or(new LootTableIdCondition.Builder(new ResourceLocation("entities/spider")))
+                        .build(),
                 LootItemRandomChanceCondition.randomChance(1f).build()
         }, ModItems.ESSENCE_T1.get()));
 
