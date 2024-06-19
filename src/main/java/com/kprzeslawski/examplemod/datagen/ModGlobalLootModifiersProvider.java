@@ -23,8 +23,9 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         }, ModItems.TANGERINE_UPGRADE.get()));
 
         add("t1_crystal", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("entities/zombie")).build(),
-                LootItemRandomChanceCondition.randomChance(0.6f).build()
+                new LootTableIdCondition.Builder(new ResourceLocation("entities/zombie"))
+                        .or(new LootTableIdCondition.Builder(new ResourceLocation("entities/skeleton"))).build(),
+                LootItemRandomChanceCondition.randomChance(1f).build()
         }, ModItems.ESSENCE_T1.get()));
 
 
