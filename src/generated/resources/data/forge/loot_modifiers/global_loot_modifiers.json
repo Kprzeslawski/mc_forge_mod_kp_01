@@ -1,5 +1,6 @@
 {
   "entries": [
+    "examplemod:t1_crystal",
     "examplemod:template_from_chests"
   ],
   "replace": false
