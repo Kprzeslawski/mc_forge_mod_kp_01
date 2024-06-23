@@ -30,8 +30,12 @@ public class ModedEnderSwordItem  extends ModedSwordItem {
     }
 
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
-
         ItemStack $$3 = pPlayer.getItemInHand(pHand);
+        pPlayer.getCooldowns().addCooldown(this, 40);
+        float ry = pPlayer.getYRot();
+        float rx = pPlayer.getXRot();
+
+
 //        pPlayer.startUsingItem(pHand);
 //        pPlayer.addEffect(new MobEffectInstance(MobEffects.REGENERATION,9999));
 //        pPlayer.addEffect(new MobEffectInstance(ModMobEffects.BONUS_ARMOR.get(),9999));
