@@ -32,8 +32,22 @@ public class ModedEnderSwordItem  extends ModedSwordItem {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack $$3 = pPlayer.getItemInHand(pHand);
         pPlayer.getCooldowns().addCooldown(this, 40);
+
+        double d0 = pPlayer.getX();
+        double d1 = pPlayer.getY();
+        double d2 = pPlayer.getZ();
+
         float ry = pPlayer.getYRot();
         float rx = pPlayer.getXRot();
+
+        for(int i = 0; i < 16; i++){
+            double destX = d0;
+            double destY = d1;
+            double destZ = d2;
+
+            if(pPlayer.randomTeleport(destX,destY,destZ,true))
+                break;
+        }
 
 
 //        pPlayer.startUsingItem(pHand);
