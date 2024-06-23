@@ -1,0 +1,27 @@
+{
+  "type": "examplemod:add_item",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/zombie"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/skeleton"
+        },
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/spider"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "examplemod:essence_t1"
+}
