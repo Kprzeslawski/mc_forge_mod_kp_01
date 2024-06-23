@@ -56,6 +56,8 @@ public class ModCreativeModTabs {
 
                         pOutput.accept(ModItems.SW_2.get().getDefaultInstance());
 
+                        pOutput.accept(ModItems.SW_3.get().getDefaultInstance());
+
 //                        pOutput.accept(ModItems.TR_1.get().getDefaultInstance());
 //                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(2));
 //                        pOutput.accept(((ModedTridentItem)ModItems.TR_1.get()).getInstance(3));

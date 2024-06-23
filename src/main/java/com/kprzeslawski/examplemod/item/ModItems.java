@@ -150,6 +150,21 @@ public class ModItems {
                     )
             ));
 
+    public static final RegistryObject<Item> SW_3 = ITEMS.register("sw_3",
+            () -> new ModedEnderSwordItem(Tiers.NETHERITE, 3, 1f, new Item.Properties(), Arrays.asList(
+                    new ReinforcedLevelProps().setBaseUUID().aD(1).aS(1).aR(1),
+                    new ReinforcedLevelProps().setBaseUUID().aD(2).aS(1).aR(1),
+                    new ReinforcedLevelProps().setBaseUUID().aD(3).aS(1).aR(1),
+                    new ReinforcedLevelProps().setBaseUUID().aD(4).aS(1).aR(1)
+            ),
+                    Arrays.asList(
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T1.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T2.get(),5),
+                            new EnergizeUpgradeCost(ModItems.ESSENCE_T3.get(),5),
+                            new EnergizeUpgradeCost(null,0)
+                    )
+            ));
+
 //    public static final RegistryObject<Item> TR_1 = ITEMS.register("tr_1",
 //            () ->  new ModedTridentItem( new Item.Properties(),
 //                            Arrays.asList(
