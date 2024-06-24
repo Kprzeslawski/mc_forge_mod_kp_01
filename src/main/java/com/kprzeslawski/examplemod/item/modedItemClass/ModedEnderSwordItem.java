@@ -3,6 +3,7 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
 import com.kprzeslawski.examplemod.world.ModMobEffects;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,9 +42,9 @@ public class ModedEnderSwordItem  extends ModedSwordItem {
         float rx = pPlayer.getXRot();
 
         for(int i = 0; i < 16; i++){
-            double destX = d0;
+            double destX = d0 + (16 - i) * -Mth.sin(ry * 0.017453292F);
             double destY = d1;
-            double destZ = d2;
+            double destZ = d2 + (16 - i) * Mth.cos(ry * 0.017453292F);
 
             if(pPlayer.randomTeleport(destX,destY,destZ,true))
                 break;
