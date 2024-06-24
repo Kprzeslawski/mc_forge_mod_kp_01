@@ -4,7 +4,6 @@ import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedArmor;
 import com.kprzeslawski.examplemod.item.modedItemClass.ModedSwordItem;
-import com.kprzeslawski.examplemod.item.modedItemClass.ModedTridentItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

@@ -2,12 +2,9 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
-import com.kprzeslawski.examplemod.world.ModMobEffects;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -49,11 +46,6 @@ public class ModedEnderSwordItem  extends ModedSwordItem {
             if(pPlayer.randomTeleport(destX,destY,destZ,true))
                 break;
         }
-
-
-//        pPlayer.startUsingItem(pHand);
-//        pPlayer.addEffect(new MobEffectInstance(MobEffects.REGENERATION,9999));
-//        pPlayer.addEffect(new MobEffectInstance(ModMobEffects.BONUS_ARMOR.get(),9999));
 
         return InteractionResultHolder.consume($$3);
     }
