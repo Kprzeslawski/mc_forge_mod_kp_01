@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod.item.modedItemClass;
 
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.EnergizeUpgradeCost;
 import com.kprzeslawski.examplemod.item.modedItemClass.modedItemComponents.ReinforcedLevelProps;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.InteractionHand;
@@ -31,7 +32,7 @@ public class ModedGunbladeItem  extends ModedSwordItem{
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.examplemod.item.gunblade"));
+        pTooltipComponents.add(Component.translatable("tooltip.examplemod.item.gunblade").withStyle(ChatFormatting.AQUA));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
