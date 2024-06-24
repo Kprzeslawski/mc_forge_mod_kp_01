@@ -10,8 +10,13 @@
   "item.examplemod.tangerine_chestplate": "Tangerine Chestplate",
   "item.examplemod.tangerine_leggings": "Tangerine Leggings",
   "item.examplemod.tangerine_boots": "Tangerine Boots",
-  "item.examplemod.sw_1": "Tets Sword 1",
-  "item.examplemod.tr_1": "Tets Trident 1",
+
+  "item.examplemod.sw_1": "Test Sword 1",
+  "item.examplemod.sw_2": "Samurai Sword",
+  "item.examplemod.sw_3": "Ender Sword",
+  "item.examplemod.sw_4": "Gunblade",
+  "item.examplemod.gauntlet": "Gauntlet",
+  "item.examplemod.tr_1": "Test Trident 1",
 
 
   "item.examplemod.essence_t1": "Depleted Essence",
@@ -22,5 +27,7 @@
   "item.examplemod.essence_t6": "Reinforced Essence",
   "item.examplemod.essence_t7": "Ancient Essence",
 
-  "creativetab.modTab": "Mod Tab"
+  "creativetab.modTab": "Mod Tab",
+
+  "tooltip.examplemod.item.gunblade": "Click right to deal damage and heal self"
 }
