@@ -50,6 +50,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.SW_1);
         handheldItem(ModItems.SW_2);
         handheldItem(ModItems.SW_3);
+        handheldItem(ModItems.SW_4);
         handheldItem(ModItems.GAUNTLET);
         //handheldItem(ModItems.TR_1);
 
