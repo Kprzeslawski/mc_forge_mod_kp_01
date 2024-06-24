@@ -43,7 +43,7 @@ public class ModedEnderSwordItem  extends ModedSwordItem {
 
         for(int i = 0; i < 16; i++){
             double destX = d0 + (16 - i) * -Mth.sin(ry * 0.017453292F) * Mth.cos(rx * 0.017453292F);
-            double destY = d1 + (16 - i) * -Mth.sin(rx * 0.017453292F);
+            double destY = d1 + Math.max((16 - i) * -Mth.sin(rx * 0.017453292F),0.F);
             double destZ = d2 + (16 - i) * Mth.cos(ry * 0.017453292F) * Mth.cos(rx * 0.017453292F);
 
             if(pPlayer.randomTeleport(destX,destY,destZ,true))
