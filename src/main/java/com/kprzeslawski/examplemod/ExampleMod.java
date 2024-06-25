@@ -2,6 +2,7 @@ package com.kprzeslawski.examplemod;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
 import com.kprzeslawski.examplemod.entity.ModEntities;
+import com.kprzeslawski.examplemod.entity.client.EnZombieRenderer;
 import com.kprzeslawski.examplemod.item.ModCreativeModTabs;
 import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.loot.ModLootModifiers;
@@ -9,6 +10,8 @@ import com.kprzeslawski.examplemod.util.ModMenu;
 import com.kprzeslawski.examplemod.util.menu.EnergizedStationScreen;
 import com.kprzeslawski.examplemod.world.ModMobEffects;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -67,6 +70,7 @@ public class ExampleMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenu.ENERGIZING_STATION_MENU.get(), EnergizedStationScreen::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE.get(), EnZombieRenderer::new);
         }
     }
 }
