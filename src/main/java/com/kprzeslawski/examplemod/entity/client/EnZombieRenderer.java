@@ -18,7 +18,7 @@ public class EnZombieRenderer extends HumanoidMobRenderer<EnZombie, ZombieModel<
 
     @Override
     public ResourceLocation getTextureLocation(EnZombie enZombie) {
-        return new ResourceLocation(ExampleMod.MOD_ID, "textures/entity/zombie/zombie.png");
+        return new ResourceLocation(ExampleMod.MOD_ID, "textures/entity/zombie/en_zombie.png");
     }
 
     @Override
