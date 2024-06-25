@@ -1,6 +1,7 @@
 package com.kprzeslawski.examplemod;
 
 import com.kprzeslawski.examplemod.block.ModBlocks;
+import com.kprzeslawski.examplemod.entity.ModEntities;
 import com.kprzeslawski.examplemod.item.ModCreativeModTabs;
 import com.kprzeslawski.examplemod.item.ModItems;
 import com.kprzeslawski.examplemod.loot.ModLootModifiers;
@@ -36,6 +37,7 @@ public class ExampleMod
         ModBlocks.register(modEventBus);
         ModMobEffects.register(modEventBus);
         ModLootModifiers.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
