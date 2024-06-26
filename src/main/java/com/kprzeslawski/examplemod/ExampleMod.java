@@ -11,7 +11,6 @@ import com.kprzeslawski.examplemod.util.menu.EnergizedStationScreen;
 import com.kprzeslawski.examplemod.world.ModMobEffects;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;

@@ -4,7 +4,6 @@ import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.entity.custom.EnZombie;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.ZombieModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
