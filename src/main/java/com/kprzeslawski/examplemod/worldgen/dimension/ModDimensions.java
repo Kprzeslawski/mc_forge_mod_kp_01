@@ -21,16 +21,16 @@ import java.util.List;
 import java.util.OptionalLong;
 
 public class ModDimensions {
-    public static final ResourceKey<LevelStem> KAUPENDIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-            new ResourceLocation(ExampleMod.MOD_ID, "kaupendim"));
-    public static final ResourceKey<Level> KAUPENDIM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-            new ResourceLocation(ExampleMod.MOD_ID, "kaupendim"));
-    public static final ResourceKey<DimensionType> KAUPEN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-            new ResourceLocation(ExampleMod.MOD_ID, "kaupendim_type"));
+    public static final ResourceKey<LevelStem> MOD_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            new ResourceLocation(ExampleMod.MOD_ID, "mod_key"));
+    public static final ResourceKey<Level> MOD_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
+            new ResourceLocation(ExampleMod.MOD_ID, "mod_level_key"));
+    public static final ResourceKey<DimensionType> MOD_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+            new ResourceLocation(ExampleMod.MOD_ID, "mod_dim_key"));
 
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
-        context.register(KAUPEN_DIM_TYPE, new DimensionType(
+        context.register(MOD_DIM_TYPE, new DimensionType(
                 OptionalLong.of(12000), // fixedTime
                 false, // hasSkylight
                 false, // hasCeiling
@@ -70,8 +70,8 @@ public class ModDimensions {
                         ))),
                 noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.KAUPEN_DIM_TYPE), noiseBasedChunkGenerator);
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.MOD_DIM_TYPE), noiseBasedChunkGenerator);
 
-        context.register(KAUPENDIM_KEY, stem);
+        context.register(MOD_KEY, stem);
     }
 }
