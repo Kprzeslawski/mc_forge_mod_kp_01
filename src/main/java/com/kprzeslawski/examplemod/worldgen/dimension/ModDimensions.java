@@ -2,8 +2,6 @@ package com.kprzeslawski.examplemod.worldgen.dimension;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.mojang.datafixers.util.Pair;
-import net.kaupenjoe.tutorialmod.TutorialMod;
-import net.kaupenjoe.tutorialmod.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
