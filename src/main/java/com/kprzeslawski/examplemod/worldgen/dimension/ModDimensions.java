@@ -12,12 +12,17 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.FlatLevelSource;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import net.minecraft.world.level.levelgen.flat.FlatLayerInfo;
+import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
+import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
 import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
@@ -60,9 +65,11 @@ public class ModDimensions {
         HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
         HolderGetter<PlacedFeature> placedFeatureHolderGetter = context.lookup(Registries.PLACED_FEATURE);
 
-        FlatLevelSource flatLevelSource = new FlatLevelSource(
-                new FlatLevelGeneratorSettings(Optional.empty(), biomeHolderGetter.getOrThrow(ModBiomes.TEST_BIOME), FlatLevelGeneratorSettings.createLakesList(placedFeatureHolderGetter))
-        );
+        FlatLevelGeneratorSettings settings =
+                new FlatLevelGeneratorSettings(Optional.empty(), biomeHolderGetter.getOrThrow(ModBiomes.TEST_BIOME), FlatLevelGeneratorSettings.createLakesList(placedFeatureHolderGetter));
+
+        settings.getLayersInfo().add(new FlatLayerInfo(2, Blocks.COBBLESTONE));
+
 
 //        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
 //                new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.TEST_BIOME)),
@@ -81,7 +88,7 @@ public class ModDimensions {
 //                        ))),
 //                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.MOD_DIM_TYPE), flatLevelSource);
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.MOD_DIM_TYPE), new FlatLevelSource(settings));
 
         context.register(MOD_KEY, stem);
     }

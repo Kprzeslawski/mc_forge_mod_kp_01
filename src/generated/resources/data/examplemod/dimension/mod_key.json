@@ -6,7 +6,12 @@
       "biome": "examplemod:test_biome",
       "features": false,
       "lakes": false,
-      "layers": []
+      "layers": [
+        {
+          "block": "minecraft:cobblestone",
+          "height": 2
+        }
+      ]
     }
   }
 }
