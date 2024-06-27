@@ -2,8 +2,8 @@ package com.kprzeslawski.examplemod.worldgen.dimension;
 
 import com.kprzeslawski.examplemod.ExampleMod;
 import com.kprzeslawski.examplemod.worldgen.biome.ModBiomes;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
@@ -15,10 +15,14 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
+import net.minecraft.world.level.levelgen.FlatLevelSource;
 import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
+import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalLong;
 
 public class ModDimensions {
@@ -41,8 +45,8 @@ public class ModDimensions {
                 true, // bedWorks
                 false, // respawnAnchorWorks
                 0, // minY
-                256, // height
-                256, // logicalHeight
+                64, // height
+                64, // logicalHeight
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
                 1.0f, // ambientLight
@@ -53,10 +57,16 @@ public class ModDimensions {
         HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
         HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
+        HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
+        HolderGetter<PlacedFeature> placedFeatureHolderGetter = context.lookup(Registries.PLACED_FEATURE);
 
-        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
-                new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.TEST_BIOME)),
-                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
+        FlatLevelSource flatLevelSource = new FlatLevelSource(
+                new FlatLevelGeneratorSettings(Optional.empty(), biomeHolderGetter.getOrThrow(ModBiomes.TEST_BIOME), FlatLevelGeneratorSettings.createLakesList(placedFeatureHolderGetter))
+        );
+
+//        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
+//                new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.TEST_BIOME)),
+//                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
 
 //        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
 //                MultiNoiseBiomeSource.createFromList(
@@ -71,7 +81,7 @@ public class ModDimensions {
 //                        ))),
 //                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.MOD_DIM_TYPE), wrappedChunkGenerator);
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.MOD_DIM_TYPE), flatLevelSource);
 
         context.register(MOD_KEY, stem);
     }

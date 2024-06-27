@@ -1,11 +1,12 @@
 {
   "type": "examplemod:mod_dim_key",
   "generator": {
-    "type": "minecraft:noise",
-    "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "examplemod:test_biome"
-    },
-    "settings": "minecraft:amplified"
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "examplemod:test_biome",
+      "features": false,
+      "lakes": false,
+      "layers": []
+    }
   }
 }
