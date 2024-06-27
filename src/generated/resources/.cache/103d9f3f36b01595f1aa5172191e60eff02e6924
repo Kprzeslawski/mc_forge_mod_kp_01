@@ -1,6 +1,7 @@
-// 1.20.1	2024-06-26T22:36:20.9680843	Registries
-157a87f2555915b3ec70cf360a535867e5761a5e data/examplemod/dimension/mod_key.json
+// 1.20.1	2024-06-27T17:06:16.8338143	Registries
+3c00b1e1c6696f62530f044e7fd62c6c18c863e1 data/examplemod/dimension/mod_key.json
 e241e971aacde6f4d0236c622c99d6c9caeb981e data/examplemod/dimension_type/mod_dim_key.json
 b48bf9d06f31c98061084ddf7ebe006fdc4aee6e data/examplemod/forge/biome_modifier/add_end_tangerine_ore.json
+1e51e31155e645bced905615148b4a4ee0980186 data/examplemod/worldgen/biome/test_biome.json
 bf3157639919a572a2cbea6d87321813aae47b6e data/examplemod/worldgen/configured_feature/end_tangerine_ore.json
 8a03cc274b73b69cb1f984f56ed4121479ef0d27 data/examplemod/worldgen/placed_feature/end_sapphire_ore_placed.json
