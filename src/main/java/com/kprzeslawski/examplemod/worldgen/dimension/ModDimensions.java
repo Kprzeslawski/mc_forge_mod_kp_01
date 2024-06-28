@@ -41,7 +41,7 @@ public class ModDimensions {
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
         context.register(MOD_DIM_TYPE, new DimensionType(
-                OptionalLong.of(12000), // fixedTime
+                OptionalLong.empty(), // fixedTime
                 false, // hasSkylight
                 false, // hasCeiling
                 false, // ultraWarm
@@ -54,8 +54,8 @@ public class ModDimensions {
                 64, // logicalHeight
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
-                1.0f, // ambientLight
-                new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
+                .5f, // ambientLight
+                new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 15)));
     }
 
     public static void bootstrapStem(BootstapContext<LevelStem> context) {
@@ -74,7 +74,6 @@ public class ModDimensions {
 //        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
 //                new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.TEST_BIOME)),
 //                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
-
 //        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
 //                MultiNoiseBiomeSource.createFromList(
 //                        new Climate.ParameterList<>(List.of(
