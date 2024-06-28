@@ -1,5 +1,6 @@
 package com.kprzeslawski.examplemod.entity.custom;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -10,6 +11,9 @@ import net.minecraft.world.level.Level;
 public class EnZombie extends Zombie {
     public EnZombie(EntityType<? extends Zombie> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.setCustomName(Component.literal("ENERGIZED ZOMBIE"));
+
+        this.setCustomNameVisible(true);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -21,5 +25,7 @@ public class EnZombie extends Zombie {
                 .add(Attributes.ARMOR,2.0)
                 .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
     }
+
+
 
 }
