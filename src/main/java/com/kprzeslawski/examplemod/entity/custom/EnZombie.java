@@ -11,8 +11,7 @@ import net.minecraft.world.level.Level;
 public class EnZombie extends Zombie {
     public EnZombie(EntityType<? extends Zombie> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.setCustomName(Component.literal("ENERGIZED ZOMBIE"));
-
+        this.setCustomName(Component.literal("ENERGIZED ZOMBIE " + this.healthString()));
         this.setCustomNameVisible(true);
     }
 
@@ -24,6 +23,10 @@ public class EnZombie extends Zombie {
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
                 .add(Attributes.ARMOR,2.0)
                 .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
+    }
+
+    public String healthString(){
+        return this.getHealth() + "/" + this.getMaxHealth();
     }
 
 
