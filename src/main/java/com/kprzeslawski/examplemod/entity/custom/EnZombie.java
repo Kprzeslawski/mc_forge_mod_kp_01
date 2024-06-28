@@ -12,9 +12,10 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 
 public class EnZombie extends Zombie {
-    public static String displayedName = "ENERGIZED ZOMBIE";
+    public String displayedName;
     public EnZombie(EntityType<? extends Zombie> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        displayedName = getName().getString();
         this.setCustomName(this.getNameAndHealthComponent());
         this.setCustomNameVisible(true);
     }
