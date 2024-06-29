@@ -20,23 +20,12 @@ public class EnZombie extends Zombie {
         this.setCustomNameVisible(true);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 35.0)
-                .add(Attributes.MAX_HEALTH, 20)
-                .add(Attributes.MOVEMENT_SPEED, 0.23000000417232513)
-                .add(Attributes.ATTACK_DAMAGE, 3.0)
-                .add(Attributes.ARMOR,2.0)
-                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE);
-    }
-
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         boolean doHurt = super.hurt(pSource, pAmount);
         this.setCustomName(this.getNameAndHealthComponent());
         return doHurt;
     }
-
     public Component getNameAndHealthComponent(){
         return Component
                 .literal(displayedName + " ")
