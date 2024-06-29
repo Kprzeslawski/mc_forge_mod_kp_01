@@ -69,7 +69,12 @@ public class ExampleMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenu.ENERGIZING_STATION_MENU.get(), EnergizedStationScreen::new);
-            EntityRenderers.register(ModEntities.EN_ZOMBIE.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L1.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L2.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L3.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L4.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L5.get(), EnZombieRenderer::new);
+            EntityRenderers.register(ModEntities.EN_ZOMBIE_L6.get(), EnZombieRenderer::new);
         }
     }
 }

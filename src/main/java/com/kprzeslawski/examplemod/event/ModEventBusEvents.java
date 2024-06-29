@@ -13,6 +13,11 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.EN_ZOMBIE.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L1.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L2.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L3.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L4.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L5.get(), EnZombieAttributesBuilder.createAttributes().build());
+        event.put(ModEntities.EN_ZOMBIE_L6.get(), EnZombieAttributesBuilder.createAttributes().build());
     }
 }
