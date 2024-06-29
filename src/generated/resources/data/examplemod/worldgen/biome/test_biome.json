@@ -93,7 +93,31 @@
     "misc": [],
     "monster": [
       {
-        "type": "examplemod:en_zombie",
+        "type": "examplemod:en_zombie_l1",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 2
+      },
+      {
+        "type": "examplemod:en_zombie_l3",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 2
+      },
+      {
+        "type": "examplemod:en_zombie_l4",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 2
+      },
+      {
+        "type": "examplemod:en_zombie_l5",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 2
+      },
+      {
+        "type": "examplemod:en_zombie_l6",
         "maxCount": 5,
         "minCount": 3,
         "weight": 2
