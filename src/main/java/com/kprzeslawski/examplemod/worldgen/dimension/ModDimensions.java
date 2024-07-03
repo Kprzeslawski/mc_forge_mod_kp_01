@@ -50,8 +50,8 @@ public class ModDimensions {
                 true, // bedWorks
                 false, // respawnAnchorWorks
                 0, // minY
-                64, // height
-                64, // logicalHeight
+                16, // height
+                16, // logicalHeight
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn
                 BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
                 .5f, // ambientLight
@@ -68,7 +68,7 @@ public class ModDimensions {
         FlatLevelGeneratorSettings settings =
                 new FlatLevelGeneratorSettings(Optional.empty(), biomeHolderGetter.getOrThrow(ModBiomes.TEST_BIOME), FlatLevelGeneratorSettings.createLakesList(placedFeatureHolderGetter));
 
-        settings.getLayersInfo().add(new FlatLayerInfo(1, Blocks.BEDROCK));
+        settings.getLayersInfo().add(new FlatLayerInfo(15, Blocks.BEDROCK));
         settings.getLayersInfo().add(new FlatLayerInfo(1, Blocks.COBBLESTONE));
 
 
