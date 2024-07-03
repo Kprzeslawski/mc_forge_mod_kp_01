@@ -121,6 +121,12 @@
         "maxCount": 5,
         "minCount": 3,
         "weight": 2
+      },
+      {
+        "type": "examplemod:en_skeleton_l1",
+        "maxCount": 5,
+        "minCount": 3,
+        "weight": 2
       }
     ],
     "underground_water_creature": [],

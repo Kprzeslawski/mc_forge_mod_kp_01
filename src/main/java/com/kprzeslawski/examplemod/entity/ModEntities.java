@@ -1,6 +1,7 @@
 package com.kprzeslawski.examplemod.entity;
 
 import com.kprzeslawski.examplemod.ExampleMod;
+import com.kprzeslawski.examplemod.entity.custom.EnSkeleton;
 import com.kprzeslawski.examplemod.entity.custom.EnZombie;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -32,7 +33,9 @@ public class ModEntities {
             ENTITY_TYPES.register("en_zombie_l6", () -> EntityType.Builder.of(EnZombie::new, MobCategory.MONSTER)
                     .sized(1f,2f).build("en_zombie_l6"));
 
-
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L1 =
+            ENTITY_TYPES.register("en_skeleton_l1", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l1"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -11,6 +11,7 @@ import com.kprzeslawski.examplemod.util.menu.EnergizedStationScreen;
 import com.kprzeslawski.examplemod.world.ModMobEffects;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.SkeletonRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -75,6 +76,8 @@ public class ExampleMod
             EntityRenderers.register(ModEntities.EN_ZOMBIE_L4.get(), EnZombieRenderer::new);
             EntityRenderers.register(ModEntities.EN_ZOMBIE_L5.get(), EnZombieRenderer::new);
             EntityRenderers.register(ModEntities.EN_ZOMBIE_L6.get(), EnZombieRenderer::new);
+
+            EntityRenderers.register(ModEntities.EN_SKELETON_L1.get(), SkeletonRenderer::new);
         }
     }
 }

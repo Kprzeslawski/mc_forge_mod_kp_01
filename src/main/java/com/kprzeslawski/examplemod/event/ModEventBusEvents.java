@@ -19,5 +19,7 @@ public class ModEventBusEvents {
         event.put(ModEntities.EN_ZOMBIE_L4.get(), EnZombieAttributesBuilder.attributesL4().build());
         event.put(ModEntities.EN_ZOMBIE_L5.get(), EnZombieAttributesBuilder.attributesL5().build());
         event.put(ModEntities.EN_ZOMBIE_L6.get(), EnZombieAttributesBuilder.attributesL6().build());
+
+        event.put(ModEntities.EN_SKELETON_L1.get(), EnZombieAttributesBuilder.attributesL1().build());
     }
 }
