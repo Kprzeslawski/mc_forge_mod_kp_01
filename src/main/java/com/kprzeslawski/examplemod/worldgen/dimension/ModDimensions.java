@@ -68,7 +68,8 @@ public class ModDimensions {
         FlatLevelGeneratorSettings settings =
                 new FlatLevelGeneratorSettings(Optional.empty(), biomeHolderGetter.getOrThrow(ModBiomes.TEST_BIOME), FlatLevelGeneratorSettings.createLakesList(placedFeatureHolderGetter));
 
-        settings.getLayersInfo().add(new FlatLayerInfo(2, Blocks.COBBLESTONE));
+        settings.getLayersInfo().add(new FlatLayerInfo(1, Blocks.BEDROCK));
+        settings.getLayersInfo().add(new FlatLayerInfo(1, Blocks.COBBLESTONE));
 
 
 //        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
