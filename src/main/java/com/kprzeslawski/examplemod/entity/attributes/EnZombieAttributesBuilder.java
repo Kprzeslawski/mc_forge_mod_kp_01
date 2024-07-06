@@ -46,12 +46,5 @@ public class EnZombieAttributesBuilder {
                 .add(Attributes.ATTACK_DAMAGE, 8.0)
                 .add(Attributes.ARMOR,5.0);
     }
-    public static AttributeSupplier.Builder attributesL6() {
-        return baseEnZombieAttributes()
-                .add(Attributes.MAX_HEALTH, 120)
-                .add(Attributes.MOVEMENT_SPEED, 0.43000000417232513)
-                .add(Attributes.ATTACK_DAMAGE, 10.0)
-                .add(Attributes.ARMOR,7.0);
-    }
 
 }

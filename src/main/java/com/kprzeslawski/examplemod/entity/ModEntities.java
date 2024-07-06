@@ -36,6 +36,24 @@ public class ModEntities {
     public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L1 =
             ENTITY_TYPES.register("en_skeleton_l1", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
                     .sized(1f,2f).build("en_skeleton_l1"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L2 =
+            ENTITY_TYPES.register("en_skeleton_l2", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l2"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L3 =
+            ENTITY_TYPES.register("en_skeleton_l3", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l3"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L4 =
+            ENTITY_TYPES.register("en_skeleton_l4", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l4"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L5 =
+            ENTITY_TYPES.register("en_skeleton_l5", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l5"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L6 =
+            ENTITY_TYPES.register("en_skeleton_l6", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l6"));
+    public static final RegistryObject<EntityType<EnSkeleton>> EN_SKELETON_L7 =
+            ENTITY_TYPES.register("en_skeleton_l7", () -> EntityType.Builder.of(EnSkeleton::new, MobCategory.MONSTER)
+                    .sized(1f,2f).build("en_skeleton_l7"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

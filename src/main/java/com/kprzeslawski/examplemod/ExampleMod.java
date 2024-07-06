@@ -78,6 +78,11 @@ public class ExampleMod
             EntityRenderers.register(ModEntities.EN_ZOMBIE_L6.get(), EnZombieRenderer::new);
 
             EntityRenderers.register(ModEntities.EN_SKELETON_L1.get(), SkeletonRenderer::new);
+            EntityRenderers.register(ModEntities.EN_SKELETON_L2.get(), SkeletonRenderer::new);
+            EntityRenderers.register(ModEntities.EN_SKELETON_L3.get(), SkeletonRenderer::new);
+            EntityRenderers.register(ModEntities.EN_SKELETON_L4.get(), SkeletonRenderer::new);
+            EntityRenderers.register(ModEntities.EN_SKELETON_L5.get(), SkeletonRenderer::new);
+            EntityRenderers.register(ModEntities.EN_SKELETON_L6.get(), SkeletonRenderer::new);
         }
     }
 }
