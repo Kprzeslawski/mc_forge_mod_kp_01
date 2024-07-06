@@ -47,12 +47,5 @@ public class EnSkeletonAttributeBuilder {
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
                 .add(Attributes.ARMOR,2.0);
     }
-    public static AttributeSupplier.Builder attributesL7() {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20)
-                .add(Attributes.MOVEMENT_SPEED, 0.23000000417232513)
-                .add(Attributes.ATTACK_DAMAGE, 3.0)
-                .add(Attributes.ARMOR,2.0);
-    }
 
 }
